@@ -5,7 +5,12 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-#
+puts "Cleaning database..."
+Event.destroy_all
+Proposition.destroy_all
+User.destroy_all
+
+
 user1 = User.create(nickname: "junior", email: "alpha@test.com", password: 123456)
 Proposition.create(content: "mcdonals")
 Proposition.create(content: "KFC")
@@ -44,3 +49,5 @@ Proposition.create(content: "The Grand place")
 Proposition.create(content: "The Towel Eiffel")
 Proposition.create(content: "The Loire Valleys castle")
 Event.create(name: "tourists", user_id: user5.id)
+
+
