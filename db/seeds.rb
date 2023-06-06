@@ -11,7 +11,7 @@ proposition.create(content: "mcdonals")
 proposition.create(content: "KFC")
 proposition.create(content: "QUIK")
 proposition.create(content: "subway")
-eventcreate(name: "restaurants", user_id: user1.id)
+event.create(name: "restaurants", user_id: user1.id)
 
 user2 = user.create(nickname: "Beta", email: "beta@test.com", password: 123456)
 
