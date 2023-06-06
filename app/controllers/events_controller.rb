@@ -6,7 +6,6 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.new
   end
 
   def new
