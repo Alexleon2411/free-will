@@ -1,4 +1,4 @@
 class Proposition < ApplicationRecord
   belongs_to :event
-  validadtes :content, presence: true
+  validates :content, presence: true
 end
