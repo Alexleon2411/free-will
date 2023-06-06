@@ -1,21 +1,26 @@
 class PropositionsController < ApplicationController
   before_action :set_event, only: [:destroy, :update, :edit]
+
   def new
-    @proposition = Event.new
+    @event = Event.find(params[:event_id])
+    @proposition = Proposition.new
+    @proposition.event_id = @event
+    redirect_to event_path(@event)
   end
 
   def create
+    @event = Event.find(params[:event_id])
     @proposition = Proposition.new(proposition_params)
-    @user = current_user
-    @proposition.user = @user
+    @proposition.event = @event
     if @proposition.save
-      redirect_to propositions_path
+      redirect_to event_path(@event)
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def edit
+    @event = Event.find(params[:event_id])
   end
 
   def update
