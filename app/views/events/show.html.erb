@@ -1,0 +1,5 @@
+<%= render "propositions/form", event: @event, proposition:  @proposition %>
+
+<% @propositions.each do |proposition| %>
+  <%= proposition.content %>
+<% end %>

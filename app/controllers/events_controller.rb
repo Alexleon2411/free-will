@@ -7,6 +7,7 @@ class EventsController < ApplicationController
 
   def show
     @propositions = Proposition.all
+    @proposition = Proposition.new
   end
 
   def new
