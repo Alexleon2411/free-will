@@ -1,16 +1,18 @@
-<%# <div class="lateraldiv d-flex flex-column">
+<div class="lateraldiv d-flex flex-column">
   <div class="d-flex justify-content-center p-3 fs-1">
-       <i class="fa-solid fa-house"></i>
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <i class="fa-solid fa-house"></i>
+    <% end %>
   </div>
-</div> %>
+</div>
 
 
 <div class="d-flex justify-content-center pe-2">
   <div class="banner objectborder  d-flex justify-content-center align-items-center">
-   <h1>here is  the banner</h1>
-   <div class="align-items-center">
-   <%= link_to "Creat an event", "#", class: "btn btn-primary"%>
-   <%= link_to "Join an event", "#", class: "btn btn-primary"%>
+   <h1 class="text-white">Welcome to free will</h1>
+   <div class="align-items-center ms-2">
+   <%= link_to "Creat an event", new_event_path, class: "btn btn-primary objectborder"%>
+   <%= link_to "Join an event", "#", class: "btn btn-primary objectborder"%>
    </div>
   </div>
 </div>
@@ -35,4 +37,3 @@
     </div>
   </div>
 </div>
-
