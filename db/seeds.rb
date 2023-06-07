@@ -29,7 +29,7 @@ prop.event = event
 prop.save
 
 user2 = User.create(nickname: "Beta", email: "beta@test.com", password: 123456)
-Event.create(name: "movies", user_id: user2.id)
+event = Event.create(name: "movies", user_id: user2.id)
 
 prop = Proposition.new(content: "Horry Potter")
 prop.event = event
@@ -45,7 +45,7 @@ prop.event = event
 prop.save
 
 user3 = User.create(nickname: "Remeo", email: "Remeo@test.com", password: 123456)
-Event.create(name: "books", user_id: user3.id)
+event = Event.create(name: "books", user_id: user3.id)
 
 prop = Proposition.new(content: "Steve jobs")
 prop.event = event
@@ -62,7 +62,7 @@ prop.save
 
 
 user4 = User.create(nickname: "juliette", email: "juliette@test.com", password: 123456)
-Event.create(name: "sports", user_id: user4.id)
+event = Event.create(name: "sports", user_id: user4.id)
 
 prop = Proposition.new(content: "Football")
 prop.event = event
@@ -77,10 +77,8 @@ prop = Proposition.create(content: "rugby")
 prop.event = event
 prop.save
 
-
-
 user5 = User.create(nickname: "Sevran", email: "sevran@test.com", password: 123456)
-Event.create(name: "tourists", user_id: user5.id)
+event = Event.create(name: "tourists", user_id: user5.id)
 
 prop = Proposition.new(content: "The big ATOMIUM")
 prop.event = event
@@ -94,4 +92,3 @@ prop.save
 prop = Proposition.create(content: "The Loire Valleys castle")
 prop.event = event
 prop.save
-
