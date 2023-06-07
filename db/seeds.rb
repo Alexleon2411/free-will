@@ -13,11 +13,20 @@ User.destroy_all
 
 
 user1 = User.create(nickname: "junior", email: "alpha@test.com", password: 123456)
-Proposition.create(content: "mcdonals")
-Proposition.create(content: "KFC")
-Proposition.create(content: "QUIK")
-Proposition.create(content: "subway")
-Event.create(name: "restaurants", user_id: user1.id)
+event = Event.create(name: "restaurants", user_id: user1.id)
+prop = Proposition.new(content: "mcdonals")
+prop.event = event
+prop.save
+prop = Proposition.create(content: "KFC")
+prop.event = event
+prop.save
+prop = Proposition.create(content: "QUIK")
+prop.event = event
+prop.save
+prop = Proposition.create(content: "subway")
+prop.event = event
+prop.save
+
 
 user2 = User.create(nickname: "Beta", email: "beta@test.com", password: 123456)
 
@@ -50,5 +59,3 @@ Proposition.create(content: "The Grand place")
 Proposition.create(content: "The Towel Eiffel")
 Proposition.create(content: "The Loire Valleys castle")
 Event.create(name: "tourists", user_id: user5.id)
-
-
