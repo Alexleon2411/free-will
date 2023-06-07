@@ -1,0 +1,4 @@
+<%= simple_form_for [@event, @proposition] do |f| %>
+  <%= f.input :content, label: 'Enter your proposition', error: 'Content is mandatory, please specify one' %>
+  <%= f.submit "add proposition" %>
+<% end %>
