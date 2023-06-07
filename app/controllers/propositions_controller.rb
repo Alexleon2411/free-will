@@ -15,7 +15,7 @@ class PropositionsController < ApplicationController
     if @proposition.save
       redirect_to event_path(@event)
     else
-      render :new, status: :unprocessable_entity
+      render "events/show", status: :unprocessable_entity
     end
   end
 
