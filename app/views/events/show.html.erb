@@ -7,7 +7,7 @@
       <div class=" d-flex flex-column align-items-center p-2" style="background-color: white; width: 450px;">
         <ul class="list-group">
           <div class="border mb-2" style="width: 400px;">
-          <%= link_to event_proposition_votes(@event, proposition) do  %>
+          <%= link_to event_proposition_votes_path(@event, proposition), data: {turbo_method: :post} do  %>
             <li class="list-group-item"><%= proposition.content %></li>
             <% end %>
             <%= link_to "Delete",
@@ -19,4 +19,3 @@
   <% end %>
 </div>
 <%= render "propositions/form", event: @event, proposition:  @proposition %>
-
