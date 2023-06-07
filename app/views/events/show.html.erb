@@ -1,21 +1,27 @@
-<div class="container d-flex justify-content-center">
+<div class="container d-flex justify-content-center p-1">
   <h2>Please add some proposition to your <%= @event.name %> event</h2>
 </div>
 
-<div class="container d-flex  flex-column align-items-center">
+<div class="container d-flex  flex-column align-items-center p-1"  style="background-color: white; width: 450px;">
   <% @event.propositions.each do |proposition| %>
-      <div class=" d-flex flex-column align-items-center p-2" style="background-color: white; width: 450px;">
+      <div class=" d-flex flex-column align-items-center p-2" >
         <ul class="list-group">
-          <div class="border mb-2" style="width: 400px;">
-          <%= link_to event_proposition_votes_path(@event, proposition), data: {turbo_method: :post} do  %>
-            <li class="list-group-item"><%= proposition.content %></li>
+          <div  style="width: 400px;">
+          <%= link_to event_proposition_votes_path(@event, proposition), data: {turbo_method: :post}, class: "text-decoration-none"  do  %>
+            <li class="list-group-item">
+            <div >
+              <%= proposition.content %>
+              <%= proposition.votes.size%>
+            </div>
+            </li>
             <% end %>
             <%= link_to "Delete",
              event_proposition_path(@event, proposition),
-             data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+             data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
+             class: "text-decoration-none" %>
           </div>
-      </ul>
-    </div>
+        </ul>
+      </div>
   <% end %>
+        <%= render "propositions/form", event: @event, proposition:  @proposition %>
 </div>
-<%= render "propositions/form", event: @event, proposition:  @proposition %>
