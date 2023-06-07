@@ -94,3 +94,4 @@ prop.save
 prop = Proposition.create(content: "The Loire Valleys castle")
 prop.event = event
 prop.save
+
