@@ -25,7 +25,7 @@ class PropositionsController < ApplicationController
 
   def update
     if @proposition.update(proposition_params)
-      redirect_to proposition_path(@proposition)
+      redirect_to event_path(@event)
     else
       render :edit, status: :unprocessable_entity
     end
@@ -33,7 +33,7 @@ class PropositionsController < ApplicationController
 
   def destroy
     @proposition.destroy
-    redirect_to propositions_path, status: :see_other
+    redirect_to event_proposition_path, status: :see_other
   end
 
   private

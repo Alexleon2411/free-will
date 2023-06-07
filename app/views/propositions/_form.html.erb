@@ -1,4 +1,8 @@
-<%= simple_form_for [@event, @proposition] do |f| %>
-  <%= f.input :content, label: 'Enter your proposition', error: 'Content is mandatory, please specify one' %>
-  <%= f.submit "add proposition" %>
-<% end %>
+<div class="container d-flex justify-content-center">
+  <div style="width: 400px; height: auto;">
+    <%= simple_form_for [@event, @proposition] do |f| %>
+      <%= f.input :content, label: 'Enter your proposition', error: 'Content is mandatory, please specify one' %>
+      <%= f.submit "add proposition", class: "btn btn-outline-dark objectborder" %>
+    <% end %>
+  </div>
+</div>

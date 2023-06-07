@@ -1,4 +1,6 @@
 <h1>Index Page</h1>
-<% @events.each do |event| %>
-<%= event.name %>
-<% end %>
+  <% @events.each do |event| %>
+  <%= link_to event_path(event) do %>
+    <%= event.name %>
+    <% end %>
+  <% end %>
