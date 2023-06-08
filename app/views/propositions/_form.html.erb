@@ -3,6 +3,7 @@
     <%= simple_form_for [@event, @proposition] do |f| %>
       <%= f.input :content, label: 'Enter your proposition', error: 'Content is mandatory, please specify one' %>
       <%= f.submit "add proposition", class: "btn btn-outline-dark objectborder" %>
+      <%= link_to "Join another event", participants_path, class: "btn btn-outline-dark objectborder"%>
     <% end %>
   </div>
 </div>

@@ -1,6 +1,6 @@
 class Vote < ApplicationRecord
   belongs_to :proposition
-  belongs_to :user
+  belongs_to :user, dependent: :destroy
 
   validates :user_id, uniqueness: { scope: [:proposition_id] }
 
