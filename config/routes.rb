@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :events do
+    member do
+      patch :status
+    end
     resources :propositions, except: [:index, :show] do
       resources :votes, only: :create
     end
