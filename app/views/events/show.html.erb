@@ -39,7 +39,10 @@
   <% else %>
   <%# this is where you start to code %>
   <h1>The winner is</h1>
-
+   <% @event.propositions.each do |proposition| %>
+   <%= proposition.content %>
+   <%= proposition.votes.count %>
+   <% end  %>
 
 
   <%# this is where you need to stop coding %>
