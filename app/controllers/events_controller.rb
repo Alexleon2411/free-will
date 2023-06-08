@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :destroy, :update, :edit]
+  before_action :set_event, only: [:show, :destroy, :update, :edit, :status]
 
   def index
     @events = Event.all
@@ -29,6 +29,11 @@ class EventsController < ApplicationController
   def edit
   end
 
+  def status
+    @event.update(status: false)
+    redirect_to events_path
+  end
+
   def update
     if @event.update(event_params)
       redirect_to event_path(@event)
@@ -49,6 +54,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name)
+    params.require(:event).permit(:name, :status)
   end
 end
