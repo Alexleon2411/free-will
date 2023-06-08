@@ -2,7 +2,7 @@ class VotesController < ApplicationController
   def create
     @event = Event.find(params[:event_id])
     @proposition = Proposition.find(params[:proposition_id])
-    @vote = Vote.new
+    @vote = Vote.new(name: "my book")
     @vote.proposition = @proposition
     @vote.proposition.event = @event
     @vote.user = current_user
