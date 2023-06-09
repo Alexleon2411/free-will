@@ -1,273 +1,134 @@
-// body {
-// 	background: #fff;
-// 	font-family: "Comfortaa", sans-serif;
-// 	position: relative;
-// }
 
+//letrasn de titulo
+.two {
+  position: relative;
+  color: #fff;
+  font: 900 60px 'Cinzel', serif;
+  text-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  color: transparent;
+  text-align: center;
+  -webkit-text-stroke: 2px #fff;
+  text-shadow: none;
+  transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+// buttons of the home page
 
 * {
 	box-sizing: border-box;
-}
-
-.main-content {
-
-	text-align: center;
-	text-transform: uppercase;
-	scroll-snap-type: y mandatory;
-	position: relative;
-	height: auto;
-	overflow-y: scroll;
-}
-
-.hover,
-.word,
-h1 {
-	cursor: pointer;
-}
-
-// h1 {
-// 	position: relative;
-// 	color: #fff;
-// 	font: 900 60px Montserrat;
-// 	text-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-// }
-
-.concept {
-	position: relative;
-	padding: 5em;
-	height: 100vh;
-	overflow: hidden;
-	scroll-snap-align: center;
-	&:before {
+	&:before,
+	&:after {
 		content: "";
 		position: absolute;
+	}
+}
+.item {
+  display: grid;
+  grid-template-rows: 1fr min-content;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  flex-wrap: wrap;
+  background: var(white);
+  &:not(.footer) {
+    padding-top: 1rem;
+  }
+}
+
+.button__wrapper {
+	display: inline-block;
+	position: relative;
+	width: 150px;
+	height: 65px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.button-pulse {
+	button {
+		background: transparent;
 		width: 100%;
 		height: 100%;
-		top: 0;
-		left: 0;
-		background: radial-gradient(rgba(0, 0, 0, 0.3), transparent);
-		opacity: 0;
-		transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
-	}
-	&:hover:before {
-		opacity: 0.5;
-	}
-}
-
-.concept-one {
-  height: 150px;
-  width: 600px;
-	display: grid;
-	grid: repeat(3, 1fr)/ repeat(3, 1fr);
-	background: yellow;
-	padding: 10px;
-  margin-bottom: 10px;
-  margin-top: 10px;
-
-  border-radius: 40px;
-  box-shadow: 10px 5px 5px black;
-	background: url("https://cdn.pixabay.com/photo/2016/03/26/22/21/books-1281581_1280.jpg")
-		no-repeat center center / cover;
-	h1 {
-    position: relative;
-	color: #fff;
-	font: 900 60px Montserrat;
-	text-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 		position: absolute;
-		margin: auto;
+		top: -10%;
 		left: 0;
-		right: 0;
-		top: 50%;
-		margin-top: -30px;
-		transition: 0.5s ease;
-		z-index: 0;
-		letter-spacing: 25px;
-	}
-	.hover {
 		z-index: 1;
+    border: none;
+    font-size: 15px;
 	}
-	.hover-1:hover ~ h1 {
-		left: 30px;
-		margin-top: -10px;
-	}
-	.hover-2:hover ~ h1 {
-		margin-top: -10px;
-	}
-	.hover-3:hover ~ h1 {
-		right: 30px;
-		margin-top: -10px;
-	}
-	.hover-4:hover ~ h1 {
-		left: 30px;
-	}
-	.hover-6:hover ~ h1 {
-		right: 30px;
-	}
-	.hover-7:hover ~ h1 {
-		left: 30px;
-		margin-top: -50px;
-	}
-	.hover-8:hover ~ h1 {
-		margin-top: -50px;
-	}
-	.hover-9:hover ~ h1 {
-		right: 30px;
-		margin-top: -50px;
-	}
-}
-
-.concept-two {
-  max-width: 100%;
-  max-height: 400px;
-	display: grid;
-	grid: 100% / repeat(24, 1fr);
-	padding: 15px1px;
- 
-	background: url(https://meowlivia.s3.us-east-2.amazonaws.com/codepen/background/forest.jpg)
-		center center / cover;
-    text-align: center;
-	.hover {
-		position: relative;
-		display: grid;
-		place-items: center;
-	}
-	h1 {
-    position: relative;
-	color: #fff;
-	font: 900 60px Montserrat;
-	text-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-		color: transparent;
-		text-align: center;
-		-webkit-text-stroke: 2px #fff;
-		text-shadow: none;
-		transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-	}
-	.hover:hover h1 {
-		transform: scale(1.3);
-		color: #fff;
-		-webkit-text-stroke: 2px transparent;
-		text-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-	}
-}
-
-
-
-.concept-four {
-	height: 150px;
-  max-width: 600px;
-	position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	letter-spacing: 20px;
-  border-radius: 40px;
-  box-shadow: 10px 5px 5px black;
-	background:  url(https://cdn.pixabay.com/photo/2019/11/07/20/48/cinema-4609877_1280.jpg)
-		no-repeat center center / cover;
-	h1 {
-		display: inline-block;
-    position: relative;
-	color: #fff;
-	font: 900 60px Montserrat;
-	text-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-	}
-	&:hover h1 {
-		letter-spacing: 10px;
-		transform: scale(1);
-		transition: 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-	}
-}
-
-.concept-five {
-	background: url(https://meowlivia.s3.us-east-2.amazonaws.com/codepen/background/mountains.jpg)
-		center center / cover;
-	display: flex;
-	align-items: center;
-  max-height: 150px;
-  max-width: 600px;
-  border-radius: 40px;
-  box-shadow: 10px 5px 5px black;
-
-  h1 {
-    position: relative;
-	color: #fff;
-	font: 900 60px Montserrat;
-	text-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-  }
-	.word {
-
-		margin: auto;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		height: 80%;
-		&:hover {
-			.char:nth-child(even) {
-				top: 20px;
-			}
-			.char:nth-child(odd) {
-				top: -20px;
-			}
-		}
-	}
-	.char {
-		flex: 1;
-		position: relative;
-		display: inline-block;
-		top: 0;
-		transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-	}
-}
-
-
-.concept-seven {
-	background: url(https://meowlivia.s3.us-east-2.amazonaws.com/codepen/background/fries.jpg)
-		top center / cover;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-  height: 150px;
-  max-width: 600px;
-  margin-top: 10px;
-  border-radius: 40px;
-  box-shadow: 10px 5px 5px black;
-
-	h1 {
-    position: relative;
-	color: #fff;
-	font: 900 60px Montserrat;
-	text-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-		letter-spacing: 3px;
-		position: relative;
+	.button__wrapper:hover .pulsing {
 		&:before {
-			content: "fries";
-			position: absolute;
-			margin: auto;
-			left: 0;
-			right: 0;
-			// max-width: 400px;
-			color: transparent;
-			letter-spacing: 10px;
-			text-shadow: none;
+			animation: pulsing 0.2s linear infinite;
 		}
-	}
-	&:hover h1:before {
-		transition: 0.6s ease;
-		color: rgba(255, 255, 255, 0.8);
-		animation: jump-out 0.6s ease forwards;
+		&:after {
+			animation: pulsing1 0.2s linear infinite;
+		}
 	}
 }
 
-@keyframes jump-out {
+.pulsing {
+	width: 99%;
+	height: 99%;
+	border-radius: 50px;
+	z-index: 1;
+	position: relative;
+
+	&:before,
+	&:after {
+		width: 100%;
+		height: 100%;
+		border: inherit;
+		top: 0;
+		left: 0;
+		z-index: 0;
+		background: rgba(0, 0, 0, 0.3);
+		border-radius: inherit;
+		animation: pulsing 2.5s linear infinite;
+	}
+	&:after {
+		animation: pulsing1 2.5s linear infinite;
+	}
+}
+
+@keyframes pulsing {
 	0% {
-		opacity: 0;
-		transform: scale(1);
+		opacity: 1;
+		transform: scaleY(1) scaleX(1);
 	}
 	20% {
-		opacity: 1;
+		opacity: 0.5;
 	}
-	100% {
+	70% {
+		opacity: 0.2;
+		transform: scaleY(1.8) scaleX(1.4);
+	}
+	80% {
 		opacity: 0;
-		transform: scale(2);
+		transform: scaleY(1.8) scaleX(1.4);
+	}
+	90% {
+		opacity: 0;
+		transform: scaleY(1) scaleX(1);
+	}
+}
+@keyframes pulsing1 {
+	0% {
+		opacity: 1;
+		transform: scaleY(1) scaleX(1);
+	}
+	20% {
+		opacity: 0.5;
+	}
+	70% {
+		opacity: 0.2;
+		transform: scaleY(1.3) scaleX(1.15);
+	}
+	80% {
+		opacity: 0;
+		transform: scaleY(1.3) scaleX(1.15);
+	}
+	90% {
+		opacity: 0;
+		transform: scaleY(1) scaleX(1);
 	}
 }

@@ -4,4 +4,5 @@ class Event < ApplicationRecord
   has_many :propositions, dependent: :destroy
   has_many :votes, through: :propositions
   validates :name, presence: true
+  validates :name, uniqueness: true
 end

@@ -7,6 +7,6 @@ class VotesController < ApplicationController
     @vote.proposition.event = @event
     @vote.user = current_user
     @vote.save!
-    redirect_to event_path(@event)
+    redirect_to events_path(@event)
   end
 end

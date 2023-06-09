@@ -1,61 +1,23 @@
-<%# <div class="lateraldiv d-flex flex-column">
-  <div class="d-flex justify-content-center p-3 fs-1"> %>
-    <%# <%= link_to root_path, class: "navbar-brand" do %>
-      <%# <i class="fa-solid fa-house"></i> %>
-    <%# <% end %>
-  <%# </div>
-</div> %>
-<div class="justify-content-center">
+
+<div class="d-flex align-items-center justify-content-center" style="min-height: 100vh;">
   <div class="row">
     <div class="col-12 col-sm-12 col-lg-12">
-      <div class="concept concept-two">
-        <div class="hover"><h1>W</h1></div><div class="hover"><h1>e</h1></div><div class="hover"><h1>l</h1></div><div class="hover"><h1>c</h1></div><div class="hover"><h1>o</h1></div><div class="hover"><h1>m</h1></div><div class="hover"><h1>e</h1>
-        </div><br> <div class="hover"><h1>T</h1></div><div class="hover"><h1>o</h1></div><br>
-        <div class="hover"><h1>F</h1></div> <div class="hover"><h1>r</h1></div><div class="hover"><h1>e</h1></div>
-        <div class="hover"><h1>e</h1></div> <br><div class="hover"><h1>W</h1></div><div class="hover"><h1>i</h1></div>
-        <div class="hover"><h1>ll</h1></div>
+      <div class="d-flex flex-column align-items-center justify-content-center">
+          <h1 class="cinzel two">Welcome to Free Will</h1>
+        <div class="d-flex  text-align-center ms-2 justify-content-between">
+        <div class="item button-pulse m-2 ">
+          <div class="button__wrapper">
+            <div class="pulsing"></div>
+            <button class="m-2"><%= link_to "Creat an event", new_event_path, class: "fs-6 text-light text-decoration-none cinzel "%></button>
+          </div>
         </div>
-        <div class="align-items-center ms-2">
-          <%= link_to "Creat an event", new_event_path, class: "btn btn-outline-dark objectborder mt-2"%>
-          <%= link_to "Join an event", "/participants", class: "btn btn-outline-dark objectborder mt-2"%>
+        <div class="item button-pulse m-2">
+          <div class="button__wrapper">
+            <div class="pulsing"></div>
+            <button class="m-2"><%= link_to "Join an event", "/participants", class: "fs-6 text-light text-decoration-none cinzel "%></button>
+          </div>
+        </div>
         </div>
       </div>
-      </div>
-  </div>
-</div>
-<%# <div class="d-flex justify-content-center pe-2">
-  <div class="banner objectborder  d-flex justify-content-center align-items-center">
-   <h1 class="text-white">Welcome to free will</h1>
-  </div>
-</div> %>
-
-<div class="container d-flex flex-wrap justify-content-center">
-  <div class="row">
-    <div class="col-12 col-sm-12 col-lg-6 main-content ">
-      <div class="m-2 concept-four" style="text-align: center;">
-        <h1>Movies</h1>
-      </div>
-      <div class="concept concept-seven">
-        <h1>Restaurants</h1>
-      </div>
-    </div>
-    <div class="col-12 col-sm-12 col-lg-6 " style="text-align: center;">
-      <div class="concept concept-one">
-        <div class="hover hover-1"></div>
-        <div class="hover hover-2"></div>
-        <div class="hover hover-3"></div>
-        <div class="hover hover-4"></div>
-        <div class="hover hover-5"></div>
-        <div class="hover hover-6"></div>
-        <div class="hover hover-7"></div>
-        <div class="hover hover-8"></div>
-        <div class="hover hover-9"></div>
-        <h1>Books</h1>
-      </div>
-      <div class="concept concept-five">
-        <h1 class="word"><span class="char">D</span><span class="char">E</span><span class="char">S</span><span class="char">T</span><span class="char">I</span><span class="char">N</span><span class="char">A</span><span class="char">T</span><span class="char">I</span><span class="char">O</span><span class="char">N</span><span class="char">S</span>
-        </h1>
-      </div>
-    </div>
   </div>
 </div>

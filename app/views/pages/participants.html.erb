@@ -1,10 +1,11 @@
-<% @participants.each do |participant| %>
-  <div class="container d-flex flex-column mb-2 align-text-center" style="width: 600px;">
+
+<div class="container d-flex flex-column mb-2 align-text-center" style="max-width: 600px;">
+  <% @participants.each do |participant| %>
     <% participant.events.each do |event| %>
       <p><%= participant.nickname %></p>
-      <%= link_to event_path(event), class: "text-decoration-none btn btn-outline-dark", style: "width: 600px;" do %>
+        <%= link_to event_path(event), class: "text-decoration-none btn btn-outline-light", style: "max-width: 600px;" do %>
         <%= event.name %>
       <% end %>
     <% end %>
-  </div>
-<% end %>
+  <% end %>
+</div>
