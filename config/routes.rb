@@ -9,10 +9,11 @@ Rails.application.routes.draw do
     member do
       patch :status
     end
-    resources :propositions, except: [:index, :show] do
+    resources :propositions, except: [:show, :index] do
       resources :votes, only: :create
     end
   end
   get "dashboard", to: "pages#dashboard"
   get "participants", to: "pages#participants"
+
 end
