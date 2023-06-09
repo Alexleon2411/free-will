@@ -40,7 +40,7 @@
   <%# this is where you start to code %>
   <div class="container " style="text-align: center;">
     <h1 class="cinzel text-white">The winner is</h1>
-    <% @event.propositions.each do |proposition| %>
+    <% @event.propositions.sort_by { |proposition| -proposition.votes.count }.each do |proposition| %>
       <div class=" m-2 p-2" style="border-radius: 10px 100px / 120px; background: rgba(0, 0, 0, 0.3);">
         <p class="plex text-white">
           <%= proposition.content %>
