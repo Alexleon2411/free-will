@@ -7,6 +7,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    @admin = Event.find(params[:id]).user
     @propositions = Proposition.all
     @proposition = Proposition.new
     @vote = Vote.new
