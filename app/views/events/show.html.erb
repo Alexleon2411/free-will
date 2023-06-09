@@ -38,8 +38,13 @@
   </div>
   <% else %>
   <%# this is where you start to code %>
-  <h1>The winner is</h1>
+    <h1>The winner is</h1>
+    <% @event.propositions.each do |proposition| %>
+      <%= proposition.content %>
+      <%= proposition.votes.count %>
+    <% end %>
 
+    <%# Proposition.joins(:votes).where("votes.proposition_id = propositions.id").group("propositions.id").order("votes.id") %>
 
 
   <%# this is where you need to stop coding %>
