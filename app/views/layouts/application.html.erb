@@ -8,9 +8,12 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Orbitron&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.2/css/all.css">
   </head>
 
-  <body>
+
+  <body style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(https://meowlivia.s3.us-east-2.amazonaws.com/codepen/background/forest.jpg); min-height: 100vh; background-size: cover;">
   <%= render "shared/navbar" %>
   <%= render "shared/flashes" %>
 
