@@ -26,23 +26,24 @@
                 </li>
                 <% end %>
               <% end %>
-                <%= link_to "Delete",
-                event_proposition_path(@event, proposition),
-                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
-                class: "text-decoration-none" %>
-              </div>
-            </ul>
-          </div>
-      <% end %>
-            <%= render "propositions/form", event: @event, proposition:  @proposition %>
-            <%= link_to "End the event", status_event_path(@event), data: {turbo_method: :patch} %>
-    </div>
-    <% else %>
-    <%# this is where you start to code %>
-    <h1>The winner is</h1>
-    <%# <% @event.propositions.each do |proposition| %>
-
-    <%# this is where you need to stop coding %>
+            <% end %>
+              <%= link_to "Delete",
+              event_proposition_path(@event, proposition),
+              data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
+              class: "text-decoration-none" %>
+            </div>
+          </ul>
+        </div>
+    <% end %>
+          <%= render "propositions/form", event: @event, proposition:  @proposition %>
+          <%= link_to "End the event", status_event_path(@event), data: {turbo_method: :patch} %>
+  </div>
+  <% else %>
+    <h1>The result is</h1>
+    <% @event.propositions.sort_by { |proposition| -proposition.votes.count }.each do |proposition| %>
+      <%= proposition.content %>
+      <%= proposition.votes.count %>
+    <% end %>
   <% end %>
 <% else %>
  <div class="container d-flex justify-content-center p-1">
