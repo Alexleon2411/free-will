@@ -25,15 +25,6 @@
                   <%= proposition.votes.size%>
                 </div>
                 </li>
-              <% else %>
-              <%= link_to event_proposition_votes_path(@event, proposition), data: {turbo_method: :post}, class: "text-decoration-none"  do  %>
-                <li class="list-group-item">
-                  <div >
-                    <%= proposition.content %>
-                    <%= proposition.votes.size%>
-                  </div>
-                </li>
-                <% end %>
               <% end %>
             <% end %>
               <%= link_to "Delete",
@@ -68,35 +59,12 @@
 
   <% end %>
 <% else %>
+
  <div class="container d-flex justify-content-center p-1">
       <h2>Please add some proposition to your <%= @event.name %> event</h2>
     </div>
 
   <div class="container d-flex  flex-column align-items-center p-1"  style="background-color: white; width: 450px;">
-    <% @event.propositions.each do |proposition| %>
-        <div class=" d-flex flex-column align-items-center p-2" >
-          <ul class="list-group">
-            <div  style="width: 400px;">
-              <% if @event.propositions.select { |proposition| proposition.votes.where(user: current_user).count > 0 }.any?  %>
-                <li class="list-group-item">
-                <div >
-                  <%= proposition.content %>
-                  <%= proposition.votes.size%>
-                </div>
-                </li>
-              <% else %>
-              <%= link_to event_proposition_votes_path(@event, proposition), data: {turbo_method: :post}, class: "text-decoration-none"  do  %>
-                <li class="list-group-item">
-                  <div >
-                    <%= proposition.content %>
-                    <%= proposition.votes.size%>
-                  </div>
-                </li>
-                <% end %>
-              <% end %>
-              </div>
-            </ul>
-          </div>
-      <% end %>
+    
     </div>
 <% end %>

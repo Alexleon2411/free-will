@@ -2,7 +2,7 @@
   <h1 class="cinzel text-white">Index Page</h1>
 </div>
 
-  <% current_user.events.each do |event| %>
+  <% @current_user_events.each do |event| %>
     <div class="container d-flex flex-column mb-2 align-text-center plex" style="max-width: 600px;">
       <%= link_to event_path(event), class: "text-decoration-none btn btn-outline-light", style: "max-width: 600px; border-radius: 10px 100px / 120px; background: rgba(0, 0, 0, 0.3);" do %>
 
