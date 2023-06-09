@@ -3,10 +3,10 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
-
   end
 
   def show
+    @admin = Event.find(params[:id]).user
     @propositions = Proposition.all
     @proposition = Proposition.new
     @vote = Vote.new
@@ -32,7 +32,7 @@ class EventsController < ApplicationController
 
   def status
     @event.update(status: false)
-    redirect_to events_path
+    # redirect_to events_path(@event)
   end
 
   def update
