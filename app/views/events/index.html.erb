@@ -4,14 +4,19 @@
 
   <% @current_user_events.each do |event| %>
     <div class="container d-flex flex-column mb-2 align-text-center plex" style="max-width: 600px;">
-      <%= link_to event_path(event), class: "text-decoration-none btn btn-outline-light", style: "max-width: 600px; border-radius: 10px 100px / 120px; background: rgba(0, 0, 0, 0.3);" do %>
-
-      <%= event.name %>
-      <%= link_to 'Edit', edit_event_path(event) %>
-      <%= link_to "Delete",
-        event_path(event),
-        data: {turbo_method: :delete,  turbo_confirm: 'Are you sure?' },
-        class: "text-decoration-none" %>
-      <% end %>
+      <div>
+        <%= link_to event_path(event), class: "text-decoration-none btn btn-outline-light", style: "max-width: 600px; border-radius: 10px 100px / 120px; background: rgba(0, 0, 0, 0.3);" do %>
+          <%= event.name %>
+        <% end %>
+      </div>
+      <div>
+        <%= link_to 'Edit', edit_event_path(event), class: "text-decoration-none" %>
+      </div>
+      <div>
+        <%= link_to "",
+          event_path(event),
+          data: {turbo_method: :delete,  turbo_confirm: 'Are you sure?' },
+          class: "text-decoration-none fa-solid fa-trash-can" %>
+      </div>
     </div>
   <% end %>
