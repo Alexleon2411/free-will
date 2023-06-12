@@ -8,7 +8,7 @@
         <div class=" d-flex flex-column align-items-center " >
           <ul class="list-group">
             <div  style="width: 400px;">
-              <% if @event.propositions.select { |proposition| proposition.votes.where(user: current_user).count > 0 }.any?  %>
+              <% if @event.propositions.select { |proposition| proposition.votes.where(user: current_user).count > 0 }.any? %>
                 <li class="list-group-item m-1 p-3 text-white d-flex justify-content-between" style="border-radius: 10px 100px / 120px; background: rgba(0, 0, 0, 0.3); heigh: 50px;">
                   <div class="objectborder " style="word-wrap: break-word;">
                     <%= proposition.content %>
@@ -16,9 +16,15 @@
                   <div>
                     <p class="mb-0">Votes: <%= proposition.votes.size%></p>
                   </div>
+                  <% if @event.votes.where(user: current_user)[0].proposition == proposition %>
+                      <span class="label-important label"><i class="icon-remove icon-white"></i></span>
+                      <i class="fa-solid fa-check"></i>
+                      <span class="label-success label"><i class="icon-ok icon-white"></i></span>
+                  <% end %>
                 </li>
+
               <% else %>
-                <%= link_to event_proposition_votes_path(@event, proposition), data: {turbo_method: :post}, class: "text-decoration-none"  do  %>
+                <%= link_to event_proposition_votes_path(@event, proposition), data: {turbo_method: :post}, class: "text-decoration-none" do  %>
                   <li class="list-group-item">
                     <div >
                       <%= proposition.content %>
