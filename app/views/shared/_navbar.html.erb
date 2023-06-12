@@ -12,10 +12,10 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to " Events", events_path, class: " text-decoration-none font objectborder mt-1 mb-1  me-2 btn btn-outline-light", style: "background-color: transparent; color: white;" %>
+            <%= link_to " My Events", events_path, class: " text-decoration-none font objectborder mt-1 mb-1  me-2 btn btn-outline-light", style: "background-color: transparent; color: white;" %>
           </li>
           <li class="nav-item active">
-            <%= link_to "Joing an event", participants_path, class: " text-decoration-none font objectborder mt-1 mb-1  me-2 btn btn-outline-light", style: "background-color: transparent; color: white;" %>
+            <%= link_to "All Events", participants_path, class: " text-decoration-none font objectborder mt-1 mb-1  me-2 btn btn-outline-light", style: "background-color: transparent; color: white;" %>
           </li>
           <li class="nav-item dropdown">
             <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
