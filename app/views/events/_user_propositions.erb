@@ -1,19 +1,19 @@
 <% if @event.status %>
-  <div class="container d-flex flex-column align-items-center p-1">
+  <div class="container d-flex flex-column align-items-center p-1" style="overflow: hidden;">
     <h2 class="cinzel text-white fs-1">"<%= @event.name %>"</h2>
-    <h3 class="plex text-white fs-6">Select one of the following opcions</h3>
+    <h3 class="plex text-white fs-6">select one of the following opcions</h3>
   </div>
   <div class="container d-flex  flex-column align-items-center p-1"  style="background-color: transparent; max-width: 450px;">
     <% @event.propositions.each do |proposition| %>
         <div class=" d-flex flex-column align-items-center " >
           <ul class="list-group">
             <div  style="width: 400px;">
-              <% if @event.propositions.select { |proposition| proposition.votes.where(user: current_user).count > 0 }.any? %>
-                <li class="list-group-item m-1 p-3 text-white d-flex justify-content-between" style="border-radius: 10px 100px / 120px; background: rgba(0, 0, 0, 0.3); heigh: 50px;">
+              <% if @event.propositions.select { |proposition| proposition.votes.where(user: current_user).count > 0 }.any?  %>
+                <li class="list-group-item m-1 p-3 text-white d-flex justify-content-between" style="border-radius: 100px 10px / 120px; background: rgba(0, 0, 0, 0.3); heigh: 50px;">
                   <div class="objectborder " style="word-wrap: break-word;">
                     <%= proposition.content %>
                   </div>
-                  <div>
+                  <div style="overflow: hidden;">
                     <p class="mb-0">Votes: <%= proposition.votes.size%></p>
                   </div>
                   <% if @event.votes.where(user: current_user)[0].proposition == proposition %>
@@ -24,11 +24,13 @@
                 </li>
 
               <% else %>
-                <%= link_to event_proposition_votes_path(@event, proposition), data: {turbo_method: :post}, class: "text-decoration-none" do  %>
-                  <li class="list-group-item">
-                    <div >
+                <%= link_to event_proposition_votes_path(@event, proposition), data: {turbo_method: :post}, class: "text-decoration-none"  do  %>
+                  <li class="list-group-item m-1 p-3 text-white d-flex justify-content-between" style="border-radius: 100px 10px / 120px; background: rgba(0, 0, 0, 0.3); heigh: 50px;">
+                    <div class="objectborder " style="word-wrap: break-word;">
                       <%= proposition.content %>
-                      <%= proposition.votes.size%>
+                    </div>
+                    <div>
+                      <p class="mb-0">Votes: <%= proposition.votes.size%></p>
                     </div>
                   </li>
                 <% end %>
@@ -42,12 +44,17 @@
   <%# result of the event%>
     <div class="container " style="text-align: center;">
       <h1 class="cinzel text-white">The winner is</h1>
-      <% @event.propositions.sort_by { |proposition| -proposition.votes.count }.each do |proposition| %>
-        <div class=" m-2 p-2" style="border-radius: 10px 100px / 120px; background: rgba(0, 0, 0, 0.3);">
-          <p class="plex text-white">
-            <%= proposition.content %>
-            <%= proposition.votes.count %>
-          </p>
+      <% @event.propositions.sort_by { |proposition| -proposition.votes.count }.each_with_index do |proposition, index| %>
+        <div class="p-2 m-1 text-white d-flex flex-column justify-content-between" style="border-radius: 100px 10px / 120px; background: rgba(0, 0, 0, 0.3); color: white;">
+            <div class=" me-2" style="overflow: hidden;">
+              <p style="overflow: hidden;"><%= proposition.content %></p>
+            </div>
+            <%# <%= proposition.content %>
+            <div class="d-flex">
+              <p><%= index + 1 %>° Place</p>
+              <p class="mb-0">Total: <%= proposition.votes.count%></p>
+            </div>
+            <%# <%= proposition.votes.count %>
         </div>
       <% end  %>
     </div>
