@@ -5,19 +5,29 @@
       <div class="d-flex flex-column align-items-center justify-content-center">
           <h1 class="cinzel two">Welcome to Free Will</h1>
         <div class="d-flex  text-align-center ms-2 justify-content-between">
-        <div class="item button-pulse m-2 ">
+        <div class="item button-typewriter m-2 ">
           <div class="button__wrapper">
-            <div class="pulsing"></div>
-            <button class="m-2"><%= link_to "Creat an event", new_event_path, class: "fs-6 text-light text-decoration-none cinzel "%></button>
+            <button class="m-2">
+              <p><%= link_to "Create an event", new_event_path, class: "fs-6 text-light text-decoration-none cinzel "%></p>
+            </button>
           </div>
         </div>
-        <div class="item button-pulse m-2">
+        <div class="item button-typewriter m-2">
           <div class="button__wrapper">
-            <div class="pulsing"></div>
-            <button class="m-2"><%= link_to "Join an event", "/participants", class: "fs-6 text-light text-decoration-none cinzel "%></button>
+            <button class="m-2">
+              <p><%= link_to "Join an event", "/participants", class: "fs-6 text-light text-decoration-none cinzel "%></p>
+            </button>
           </div>
         </div>
         </div>
       </div>
   </div>
 </div>
+<%# <div class="item button-typewriter" style="--bg-color: #e74c3c">
+    <div class="button__wrapper">
+      <button>
+        <p>Click Me!</p>
+      </button>
+    </div>
+    <div class="name">Typewriter</div>
+  </div> %>
