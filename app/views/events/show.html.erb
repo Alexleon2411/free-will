@@ -25,15 +25,6 @@
                   <%= proposition.votes.size%>
                 </div>
                 </li>
-              <% else %>
-              <%= link_to event_proposition_votes_path(@event, proposition), data: {turbo_method: :post}, class: "text-decoration-none"  do  %>
-                <li class="list-group-item">
-                  <div >
-                    <%= proposition.content %>
-                    <%= proposition.votes.size%>
-                  </div>
-                </li>
-                <% end %>
               <% end %>
             <% end %>
               <%= link_to "Delete",
@@ -51,7 +42,7 @@
   <%# this is where you start to code %>
   <div class="container " style="text-align: center;">
     <h1 class="cinzel text-white">The winner is</h1>
-                  
+
     <% @event.propositions.sort_by { |proposition| -proposition.votes.count }.each do |proposition| %>
       <div class=" m-2 p-2" style="border-radius: 10px 100px / 120px; background: rgba(0, 0, 0, 0.3);">
         <p class="plex text-white">
