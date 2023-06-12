@@ -16,7 +16,13 @@
                   <div style="overflow: hidden;">
                     <p class="mb-0">Votes: <%= proposition.votes.size%></p>
                   </div>
+                  <% if @event.votes.where(user: current_user)[0].proposition == proposition %>
+                      <span class="label-important label"><i class="icon-remove icon-white"></i></span>
+                      <i class="fa-solid fa-check"></i>
+                      <span class="label-success label"><i class="icon-ok icon-white"></i></span>
+                  <% end %>
                 </li>
+
               <% else %>
                 <%= link_to event_proposition_votes_path(@event, proposition), data: {turbo_method: :post}, class: "text-decoration-none"  do  %>
                   <li class="list-group-item m-1 p-3 text-white d-flex justify-content-between" style="border-radius: 100px 10px / 120px; background: rgba(0, 0, 0, 0.3); heigh: 50px;">
