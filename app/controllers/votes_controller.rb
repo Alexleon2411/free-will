@@ -13,6 +13,7 @@ class VotesController < ApplicationController
   def destroy
     @event = Event.find(params[:event_id])
     @proposition = Proposition.find(params[:proposition_id])
+    @user_proposition = @event.votes.where(user: current_user)[0].proposition == @proposition
     @user_vote = @event.votes.find_by(user: current_user)
     @user_vote.destroy
     redirect_to event_path(@event)

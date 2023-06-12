@@ -1,6 +1,6 @@
 <% if @event.status %>
-   <div class="container d-flex justify-content-center p-1">
-    <h2><%= @event.name %> event</h2>
+   <div class="container d-flex justify-content-center p-1" style="overflow: hidden; min-heigh: 70px">
+    <h2 class="cinzel text-white" style="min-height: 70px;"><%= @event.name %> event</h2>
    </div>
 
     <div class="container d-flex  flex-column align-items-center p-1"  style="background-color: transparent; max-width: 450px;">
@@ -9,31 +9,34 @@
           <ul class="list-group">
             <div  style="width: 400px;">
               <% if @event.propositions.select { |proposition| proposition.votes.where(user: current_user).count > 0 }.any?  %>
-                <li class="list-group-item "  style=" background-color: trasnparent; border-radius: 40px;" >
-                  <div class="objectborder" style="word-wrap: break-word;">
+                <li class="list-group-item m-1 p-3 text-white d-flex justify-content-between" style="border-radius: 100px 10px / 120px; background: rgba(0, 0, 0, 0.3); heigh: 50px;">
+                  <div class="objectborder " style="word-wrap: break-word; overflow-y: scroll;">
                     <%= proposition.content %>
-                    <%= proposition.votes.size %>
+                  </div>
+                  <div class="border" style="border-radius: 40px;">
+                    <p class="mb-0 p-2" style="content-box: break-word; font-size: 15px;">Votes: <%= proposition.votes.size%></p>
                   </div>
                 </li>
+                <%= link_to "Change your Mind?", event_proposition_vote_path(@event, proposition), data: {turbo_method: :delete}, class: "btn btn-outline-light objectborder" %>
               <% else %>
-                <div class="d-flex">
-                  <%= link_to event_proposition_votes_path(@event, proposition), data: {turbo_method: :post}, class: "text-decoration-none" do  %>
-                    <li class="list-group-item "  style=" background-color: trasnparent; border-radius: 40px;">
-                      <div style="width: 150px;" class="d-flex justify-content-between">
-                        <%= proposition.content %>
-                        <div class="" style=" max-width: 120px; height: 25px; border-radius: 40px;">
-                          <p>votes: <%= proposition.votes.size%></p>
-                        </div>
+                <div class="d-flex flex-column">
+                  <%= link_to event_proposition_votes_path(@event, proposition), data: {turbo_method: :post}, class: "text-decoration-none", style: "heigh: 60px ;width: 400px;" do  %>
+                    <li class="list-group-item m-1  text-white d-flex justify-content-between" style="border-radius: 100px 10px / 120px; background: rgba(0, 0, 0, 0.3); heigh: 50px;">
+                      <div class=" me-2" style="overflow: hidden;">
+                        <p style="overflow: hidden;"><%= proposition.content %></p>
+                      </div>
+                      <div class="border p-2" style="border-radius: 40px;">
+                        <p class="mb-0">Votes: <%= proposition.votes.size%></p>
                       </div>
                     </li>
                   <% end %><%#this is the end to the VOTES iterations  %>
-                  <div class="d-flex justify-content-center align-items-center ">
+
                     <%= link_to "",
                     event_proposition_path(@event, proposition),
                     data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
-                    class: "text-decoration-none fa-solid fa-trash-can",
-                    style: "margin-left: 5px;" %>
-                  </div>
+                    class: "text-decoration-none fa-solid fa-trash-can fs-5",
+                    style: "margin-left: 15px; margin-bottom: 30px; margin-top: 5px;" %>
+
                 </div>
               <% end %> <%#this is the end to the IF/ELSE statement %>
             </div>
@@ -56,12 +59,16 @@
   <div class="container " style="text-align: center;">
     <h1 class="cinzel text-white">The winner is</h1>
     <% @event.propositions.sort_by { |proposition| -proposition.votes.count }.each_with_index do |proposition, index| %>
-      <div class=" m-2 p-2" style="border-radius: 10px 100px / 120px; background: rgba(0, 0, 0, 0.3);">
-        <p class="plex text-white" style=" background-color: trasnparent; border-radius: 40px;">
-        <p><%= index + 1 %>° Place</p>
-          <%= proposition.content %>
-          <%= proposition.votes.count %>
-        </p>
+      <div class=" m-1 text-white d-flex flex-column justify-content-between" style="border-radius: 100px 10px / 120px; background: rgba(0, 0, 0, 0.3); color: white;">
+          <div class=" me-2" style="overflow: hidden;">
+            <p style="overflow: hidden;"><%= proposition.content %></p>
+          </div>
+          <%# <%= proposition.content %>
+          <div class="d-flex justify-content-evenly">
+            <p><%= index + 1 %>° Place</p>
+            <p class="mb-0">Total: <%= proposition.votes.count%></p>
+          </div>
+          <%# <%= proposition.votes.count %>
       </div>
     <% end %>
   </div>

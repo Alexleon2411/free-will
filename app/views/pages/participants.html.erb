@@ -4,10 +4,10 @@
 <div class="container d-flex flex-column mb-2 align-text-center objectborder" style="max-width: 600px;">
   <% @participants.each do |participant| %>
     <% participant.events.each do |event| %>
-        <%= link_to event_path(event), class: "text-decoration-none btn btn-outline-light ", style: "max-width: 600px; border-radius: 10px 100px / 120px; background: rgba(0, 0, 0, 0.3);" do %>
+        <%= link_to event_path(event), class: "text-decoration-none btn btn-outline-light ", style: "max-width: 600px; border-radius: 100px 10px / 120px; background: rgba(0, 0, 0, 0.3);" do %>
         <%= event.name %>
       <% end %>
-      <p class="ms-1" style="color: #4C20AC;"><%= participant.nickname %></p>
+      <p class="ms-1" style="color: white;">#<%= participant.nickname %></p>
     <% end %>
   <% end %>
 </div>
