@@ -1,9 +1,8 @@
 <% if current_user == @admin %> <%#this is for display the details to the admin  %>
   <% if @event.status %>
-    <div class="container d-flex justify-content-center p-1">
-      <h2 class="cinzel"><%= @event.name %></h2>
-    </div>
-
+   <div class="container d-flex justify-content-center p-1">
+    <h2>Please add some proposition to your <%= @event.name %> event</h2>
+   </div>
     <div class="container d-flex  flex-column align-items-center p-1"  style="background-color: transparent; max-width: 450px;">
       <% @event.propositions.each do |proposition| %>
         <div class=" d-flex flex-column align-items-center p-2" >
@@ -77,36 +76,53 @@
   </div>
   <%# this is where you need to stop coding %>
 <% else %>
-
-  <div class="container d-flex justify-content-center p-1">
-    <h2><%= @event.name %></h2>
-  </div>
-
-  <div class="container d-flex  flex-column align-items-center p-1"  style="background-color: transparent; max-width: 450px;">
-    <% @event.propositions.each do |proposition| %>
-      <div class=" d-flex flex-column align-items-center p-2" >
-        <ul class="list-group">
-          <div  style="width: 350px;">
-            <% if @event.propositions.select { |proposition| proposition.votes.where(user: current_user).count > 0 }.any?  %>
-              <li class="list-group-item"  style=" background-color: trasnparent; border-radius: 40px;">
-                <div class="d-flex" style="background-color: transparent;">
-                  <%= proposition.content %>
-                  <%= proposition.votes.size%>
-                </div>
-              </li>
-            <% else %>
-              <%= link_to event_proposition_votes_path(@event, proposition), data: {turbo_method: :post}, class: "text-decoration-none"  do  %>
-                <li class="list-group-item">
-                  <div >
+  <% if @event.status %>
+   <div class="container d-flex justify-content-center p-1">
+    <h2> <%= @event.name %></h2>
+   </div>
+    <div class="container d-flex  flex-column align-items-center p-1"  style="background-color: transparent; max-width: 450px;">
+      <% @event.propositions.each do |proposition| %>
+          <div class=" d-flex flex-column align-items-center p-2" >
+            <ul class="list-group">
+              <div  style="width: 400px;">
+                <% if @event.propositions.select { |proposition| proposition.votes.where(user: current_user).count > 0 }.any?  %>
+                  <li class="list-group-item " style="border-radius: ">
+                  <div class="objectborder">
                     <%= proposition.content %>
                     <%= proposition.votes.size%>
                   </div>
-                </li>
-              <% end %>
-            <% end %>
+                <% else %>
+                  <%= link_to event_proposition_votes_path(@event, proposition), data: {turbo_method: :post}, class: "text-decoration-none"  do  %>
+                    <li class="list-group-item">
+                      <div >
+                        <%= proposition.content %>
+                        <%= proposition.votes.size%>
+                      </div>
+                    </li>
+                  <% end %>
+                <% end %>
+              </div>
+            </ul>
           </div>
-        </ul>
+      <% end %>
+    </div>
+  <% else %>
+    <%# this is where you start to code %>
+    <div class="container " style="text-align: center;">
+    <h1 class="cinzel text-white">The winner is</h1>
+
+    <% @event.propositions.sort_by { |proposition| -proposition.votes.count }.each do |proposition| %>
+      <div class=" m-2 p-2" style="border-radius: 10px 100px / 120px; background: rgba(0, 0, 0, 0.3);">
+        <p class="plex text-white">
+          <%= proposition.content %>
+          <%= proposition.votes.count %>
+        </p>
       </div>
-    <% end %>
+    <% end  %>
+  <% end %>
   </div>
+  <div class="ms-3">
+    <%= link_to "back to events", events_path, class: "btn btn-outline-light objectborder" %>
+  </div>
+  <%# this is where you need to stop coding %>
 <% end %>
