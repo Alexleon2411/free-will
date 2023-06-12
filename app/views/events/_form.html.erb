@@ -2,8 +2,8 @@
 <div class="container d-flex justify-content-center text-white">
   <div style="max-width: 400px; height: auto;">
     <%= simple_form_for @event do |f| %>
-      <%= f.input :name, label: 'Name of the event', error: 'Name is mandatory, please specify one' %>
-      <%= f.button :submit, class: "btn btn-outline-light objectborder"%>
+      <%= f.input :name, label: 'Name of the event', error: 'Name is mandatory, please specify one', style: 'color: white;' %>
+      <%= f.button :submit, class: "btn btn-secundary objectborder text-white" %>
     <% end %>
   </div>
 </div>

@@ -28,7 +28,7 @@
   justify-content: center;
   height: 50vh;
   flex-wrap: wrap;
-  background: var(white);
+  background: var(black );
   &:not(.footer) {
     padding-top: 1rem;
   }
@@ -42,93 +42,118 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+  background-color: transparent;
 }
 
-.button-pulse {
+
+.button-typewriter {
 	button {
-		background: transparent;
+		width: 170px;
+		height: 32px;
+    background-color: transparent;
+    border-radius: 40px;
+	}
+	p {
+		animation: typing 4s steps(12) infinite;
+		display: inline-block;
+		overflow: hidden;
+		white-space: nowrap;
+	}
+	.button__wrapper:hover p {
+		animation: blink 0.3s infinite;
+	}
+}
+
+@keyframes typing {
+	0% {
+		width: 0;
+	}
+	50% {
 		width: 100%;
-		height: 100%;
+	}
+	55%,
+	65%,
+	75% {
+		opacity: 1;
+	}
+	60%,
+	70% {
+		opacity: 0;
+	}
+	80% {
+		width: 100%;
+	}
+	100% {
+		width: 0;
+	}
+}
+
+.button-parrot {
+	.parrot {
 		position: absolute;
-		top: -10%;
-		left: 0;
-		z-index: 1;
-    border: none;
-    font-size: 15px;
-	}
-	.button__wrapper:hover .pulsing {
+		width: 60px;
+		text-align: center;
+		animation: blink 0.8s infinite;
+		color: black;
 		&:before {
-			animation: pulsing 0.2s linear infinite;
+			content: "Create An Event!";
 		}
-		&:after {
-			animation: pulsing1 0.2s linear infinite;
+		&:nth-child(1) {
+			top: -30px;
+			left: -40px;
+			font: 12px/1 "Margarine", sans-serif;
+			transform: rotate(-20deg);
+			animation-duration: 0.5s;
+		}
+		&:nth-child(2) {
+			font: 12px/1 "Margarine", sans-serif;
+			right: -40px;
+			top: -20px;
+			transform: rotate(15deg);
+			animation-duration: 0.3s;
+		}
+		&:nth-child(3) {
+			font: 16px/1 "Margarine", sans-serif;
+			top: -60px;
+			left: 15px;
+			transform: rotate(10deg);
+			animation-duration: 1s;
+		}
+		&:nth-child(4) {
+			font: 18px/1 "Margarine", sans-serif;
+			top: -70px;
+			left: 95px;
+			transform: rotate(2deg);
+			animation-duration: 0.7s;
+		}
+		&:nth-child(5) {
+			font: 14px/1 "Margarine", sans-serif;
+			top: 80px;
+			left: 105px;
+			transform: rotate(-20deg);
+			animation-duration: 0.8s;
+		}
+		&:nth-child(6) {
+			font: 12px/1 "Margarine", sans-serif;
+			top: 80px;
+			left: 5px;
+			transform: rotate(10deg);
+			animation-duration: 1.2s;
 		}
 	}
-}
-
-.pulsing {
-	width: 99%;
-	height: 99%;
-	border-radius: 50px;
-	z-index: 1;
-	position: relative;
-
-	&:before,
-	&:after {
-		width: 100%;
-		height: 100%;
-		border: inherit;
-		top: 0;
-		left: 0;
-		z-index: 0;
-		background: rgba(0, 0, 0, 0.3);
-		border-radius: inherit;
-		animation: pulsing 2.5s linear infinite;
-	}
-	&:after {
-		animation: pulsing1 2.5s linear infinite;
+	button:hover .parrot:before {
+		content: "Do it!";
+		width: 70px;
 	}
 }
 
-@keyframes pulsing {
-	0% {
-		opacity: 1;
-		transform: scaleY(1) scaleX(1);
+@keyframes blink {
+	25%,
+	75% {
+		color: transparent;
 	}
-	20% {
-		opacity: 0.5;
-	}
-	70% {
-		opacity: 0.2;
-		transform: scaleY(1.8) scaleX(1.4);
-	}
-	80% {
-		opacity: 0;
-		transform: scaleY(1.8) scaleX(1.4);
-	}
-	90% {
-		opacity: 0;
-		transform: scaleY(1) scaleX(1);
-	}
-}
-@keyframes pulsing1 {
-	0% {
-		opacity: 1;
-		transform: scaleY(1) scaleX(1);
-	}
-	20% {
-		opacity: 0.5;
-	}
-	70% {
-		opacity: 0.2;
-		transform: scaleY(1.3) scaleX(1.15);
-	}
-	80% {
-		opacity: 0;
-		transform: scaleY(1.3) scaleX(1.15);
-	}
-	90% {
-		opacity: 0;
-		transform: scaleY(1) scaleX(1);
+	40%,
+	60% {
+		color: #070707;
 	}
 }

@@ -1,9 +1,10 @@
 <div class="container d-flex justify-content-center">
   <div style="width: 400px; height: auto;">
     <%= simple_form_for [@event, @proposition] do |f| %>
-      <%= f.input :content, label: 'Enter your proposition', error: 'Content is mandatory, please specify one' %>
-      <%= f.submit "add proposition", class: "btn btn-outline-dark objectborder" %>
-      <%= link_to "back", events_path, class: "btn btn-outline-dark objectborder"%>
+    <div class="d-flex">
+      <%= f.input :content, label: 'Enter your proposition', error: 'Content is mandatory, please specify one', class: "text-white" %>
+      <%= f.submit "Add ", class: "btn btn-outline-light objectborder p-1 ", style: "max-width: 100px; max-height: 37px; margin-top: 33px; margin-left: 5px;"%>
+    </div>
     <% end %>
   </div>
 </div>
