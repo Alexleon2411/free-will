@@ -1,6 +1,6 @@
 <% if @event.status %>
    <div class="container d-flex justify-content-center p-1" style="overflow: hidden; min-heigh: 70px">
-    <h2 class="cinzel text-white" style="min-height: 70px;"><%= @event.name %> event</h2>
+    <h2 class="cinzel text-white" style="min-height: 70px;"><%= @event.name %></h2>
    </div>
 
     <div class="container d-flex  flex-column align-items-center p-1"  style="background-color: transparent; max-width: 450px;">
@@ -10,7 +10,7 @@
             <div  style="width: 400px;">
               <% if @event.propositions.select { |proposition| proposition.votes.where(user: current_user).count > 0 }.any?  %>
                 <li class="list-group-item m-1 p-3 text-white d-flex justify-content-between" style="border-radius: 100px 10px / 120px; background: rgba(0, 0, 0, 0.3); heigh: 50px;">
-                  <div class="objectborder " style="word-wrap: break-word; overflow-y: scroll;">
+                  <div class="" style="word-wrap: break-word; overflow-y: scroll;">
                     <%= proposition.content %>
                   </div>
                   <div class="border" style="border-radius: 40px;">
