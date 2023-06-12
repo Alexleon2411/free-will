@@ -1,7 +1,7 @@
 <% if @event.status %>
   <div class="container d-flex flex-column align-items-center p-1">
     <h2 class="cinzel text-white fs-1">"<%= @event.name %>"</h2>
-    <h3 class="plex text-white fs-6">Select one of the following opcions</h3>
+    <h3 class="plex text-white fs-6">Select one of the following options</h3>
   </div>
   <div class="container d-flex  flex-column align-items-center p-1"  style="background-color: transparent; max-width: 450px;">
     <% @event.propositions.each do |proposition| %>
@@ -17,6 +17,7 @@
                     <p class="mb-0">Votes: <%= proposition.votes.size%></p>
                   </div>
                 </li>
+                <%= link_to "Change your Mind?", event_proposition_vote_path(@event, proposition), data: {turbo_method: :delete}, class: "btn btn-outline-light objectborder" %>
               <% else %>
                 <%= link_to event_proposition_votes_path(@event, proposition), data: {turbo_method: :post}, class: "text-decoration-none"  do  %>
                   <li class="list-group-item">
