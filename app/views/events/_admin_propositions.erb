@@ -1,3 +1,4 @@
+<div style="">
 <% if @event.status %>
    <div class="container d-flex justify-content-center p-1" style="overflow: hidden; min-heigh: 70px">
     <h2 class="cinzel text-white" style="min-height: 70px;"><%= @event.name %></h2>
@@ -24,9 +25,9 @@
                   <% end %>
                 </li>
               <% else %>
-                <div class="d-flex flex-column">
+                <div class="d-flex align-items-center ">
                   <%= link_to event_proposition_votes_path(@event, proposition), data: {turbo_method: :post}, class: "text-decoration-none", style: "heigh: 60px ;width: 400px;" do  %>
-                    <li class="list-group-item m-1  text-white d-flex justify-content-between" style="border-radius: 100px 10px / 120px; background: rgba(0, 0, 0, 0.3); heigh: 50px;">
+                    <li class="list-group-item m-1  text-white d-flex justify-content-between" style="border-radius: 100px 10px / 120px; background: rgba(0, 0, 0, 0.3); heigh: 50px; width: 350px;">
                       <div class=" me-2" style="overflow: hidden;">
                         <p style="overflow: hidden;"><%= proposition.content %></p>
                       </div>
@@ -35,13 +36,13 @@
                       </div>
                     </li>
                   <% end %><%#this is the end to the VOTES iterations  %>
-
-                    <%= link_to "",
-                    event_proposition_path(@event, proposition),
-                    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
-                    class: "text-decoration-none fa-solid fa-trash-can fs-5",
-                    style: "margin-left: 15px; margin-bottom: 30px; margin-top: 5px;" %>
-
+                    <div class="align-items-end">
+                      <%= link_to "",
+                      event_proposition_path(@event, proposition),
+                      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
+                      class: "text-decoration-none fa-solid fa-trash-can fs-5 position-relative",
+                      style: "margin-right: 30px; margin-bottom: 20px;color: white; " %>
+                    </div>
                 </div>
               <% end %> <%#this is the end to the IF/ELSE statement %>
             </div>
@@ -83,4 +84,5 @@
 <% end %>
 <div class="container">
   <%= link_to "back to events", events_path, class: "btn btn-outline-light objectborder m-2" %>
+</div>
 </div>
