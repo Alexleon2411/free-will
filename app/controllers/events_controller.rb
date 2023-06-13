@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   def index
     @events = Event.all.order(created_at: :desc)
     @current_user_events = current_user.events.order(created_at: :desc)
-    
+
   end
 
   def show
