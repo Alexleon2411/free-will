@@ -39,8 +39,10 @@
           </ul>
         </div>
     <% end %>
-    <%# <%= link_to "Change your Mind?", event_proposition_vote_path(@event, @user_proposition), data: {turbo_method: :delete}, class: "btn btn-outline-light objectborder" %> %>
-  </div>
+        <% if @current_user_vote.nil? == false %>
+          <%= link_to "Change your Mind?", vote_path( id: @current_user_vote.id), data: {turbo_method: :delete}, class: "btn btn-outline-light objectborder"%>
+        <% end %>
+      </div>
 <% else %>
   <%# result of the event%>
     <div class="container " style="text-align: center;">
