@@ -17,12 +17,12 @@
                     <p class="mb-0">Votes: <%= proposition.votes.size%></p>
                   </div>
                   <% if @event.votes.where(user: current_user)[0].proposition == proposition %>
+
                       <span class="label-important label"><i class="icon-remove icon-white"></i></span>
-                      <i class="fa-solid fa-check"></i>
+                      <i class="fa-regular fa-square-check fa-beat-fade" style="color: #ffffff;"></i>
                       <span class="label-success label"><i class="icon-ok icon-white"></i></span>
                   <% end %>
                 </li>
-
               <% else %>
                 <%= link_to event_proposition_votes_path(@event, proposition), data: {turbo_method: :post}, class: "text-decoration-none"  do  %>
                   <li class="list-group-item m-1 p-3 text-white d-flex justify-content-between" style="border-radius: 100px 10px / 120px; background: rgba(0, 0, 0, 0.3); heigh: 50px;">
@@ -45,7 +45,7 @@
     <div class="container " style="text-align: center;">
       <h1 class="cinzel text-white">The winner is</h1>
       <% @event.propositions.sort_by { |proposition| -proposition.votes.count }.each_with_index do |proposition, index| %>
-        <div class="p-2 m-1 text-white d-flex flex-column justify-content-between" style="border-radius: 100px 10px / 120px; background: rgba(0, 0, 0, 0.3); color: white;">
+        <div class="p-2 m-1 text-white d-flex flex-column justify-content-between proposition <%= index == 0 ? "winner" : "" %> " style="border-radius: 100px 10px / 120px; background: rgba(0, 0, 0, 0.3); color: white;">
             <div class=" me-2" style="overflow: hidden;">
               <p style="overflow: hidden;"><%= proposition.content %></p>
             </div>

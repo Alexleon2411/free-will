@@ -18,12 +18,5 @@
             style: "color: white;"%>
         </div>
       </div>
-      <%= event.name %>
-      <%= link_to 'Edit', edit_event_path(event) %>
-      <%= link_to "Delete",
-        event_path(event),
-        data: {turbo_method: :delete,  turbo_confirm: 'Are you sure?' },
-        class: "text-decoration-none" %>
-      <% end %>
     </div>
   <% end %>
