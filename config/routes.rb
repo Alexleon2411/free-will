@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       patch :status
     end
     resources :propositions, except: [:show, :index] do
-      resources :votes, only: :create
+      resources :votes, only: [:create, :destroy], shallow: true
     end
   end
   get "dashboard", to: "pages#dashboard"

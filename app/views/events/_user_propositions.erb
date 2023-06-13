@@ -1,7 +1,8 @@
+
 <% if @event.status %>
   <div class="container d-flex flex-column align-items-center p-1" style="overflow: hidden;">
     <h2 class="cinzel text-white fs-1">"<%= @event.name %>"</h2>
-    <h3 class="plex text-white fs-6">select one of the following opcions</h3>
+    <h3 class="plex text-white fs-6">Select one of the following options</h3>
   </div>
   <div class="container d-flex  flex-column align-items-center p-1"  style="background-color: transparent; max-width: 450px;">
     <% @event.propositions.each do |proposition| %>
@@ -10,7 +11,7 @@
             <div  style="width: 400px;">
               <% if @event.propositions.select { |proposition| proposition.votes.where(user: current_user).count > 0 }.any?  %>
                 <li class="list-group-item m-1 p-3 text-white d-flex justify-content-between" style="border-radius: 100px 10px / 120px; background: rgba(0, 0, 0, 0.3); heigh: 50px;">
-                  <div class="objectborder " style="word-wrap: break-word;">
+                  <div class="" style="word-wrap: break-word;">
                     <%= proposition.content %>
                   </div>
                   <div style="overflow: hidden;">
@@ -25,21 +26,43 @@
                 </li>
               <% else %>
                 <%= link_to event_proposition_votes_path(@event, proposition), data: {turbo_method: :post}, class: "text-decoration-none"  do  %>
+
                   <li class="list-group-item m-1 p-3 text-white d-flex justify-content-between" style="border-radius: 100px 10px / 120px; background: rgba(0, 0, 0, 0.3); heigh: 50px;">
-                    <div class="objectborder " style="word-wrap: break-word;">
+                    <div class="" style="word-wrap: break-word;">
                       <%= proposition.content %>
                     </div>
-                    <div>
+                    <div style="overflow: hidden;">
                       <p class="mb-0">Votes: <%= proposition.votes.size%></p>
                     </div>
+                    <% if @event.votes.where(user: current_user)[0].proposition == proposition %>
+                        <span class="label-important label"><i class="icon-remove icon-white"></i></span>
+                          <i class="fa-solid fa-check"></i>
+                        <span class="label-success label"><i class="icon-ok icon-white"></i></span>
+                    <% end %>
                   </li>
+
+                <% else %>
+                  <%= link_to event_proposition_votes_path(@event, proposition), data: {turbo_method: :post}, class: "text-decoration-none"  do  %>
+                    <li class="list-group-item m-1 p-3 text-white d-flex justify-content-between" style="border-radius: 100px 10px / 120px; background: rgba(0, 0, 0, 0.3); heigh: 50px;">
+                      <div class="objectborder " style="word-wrap: break-word;">
+                        <%= proposition.content %>
+                      </div>
+                      <div>
+                        <p class="mb-0">Votes: <%= proposition.votes.size%></p>
+                      </div>
+                    </li>
+                  <% end %>
                 <% end %>
+
               <% end %>
             </div>
           </ul>
         </div>
     <% end %>
-  </div>
+        <% if @current_user_vote.nil? == false %>
+          <%= link_to "Change your Mind?", vote_path( id: @current_user_vote.id), data: {turbo_method: :delete}, class: "btn btn-outline-light objectborder"%>
+        <% end %>
+      </div>
 <% else %>
   <%# result of the event%>
     <div class="container " style="text-align: center;">
@@ -58,9 +81,26 @@
         </div>
       <% end  %>
     </div>
-<%= render "animation"%>
-<% end %>
+  <% else %>
+    <%# result of the event%>
+      <div class="container " style="text-align: center;">
+        <h1 class="cinzel text-white">The winner is</h1>
+        <% @event.propositions.sort_by { |proposition| -proposition.votes.count }.each_with_index do |proposition, index| %>
+          <div class="p-2 m-1 text-white d-flex flex-column justify-content-between" style="border-radius: 100px 10px / 120px; background: rgba(0, 0, 0, 0.3); color: white;">
+              <div class=" me-2" style="overflow: hidden;">
+                <p style="overflow: hidden;"><%= proposition.content %></p>
+              </div>
+              <div class="d-flex">
+                <p><%= index + 1 %>° Place</p>
+                <p class="mb-0">Total: <%= proposition.votes.count%></p>
+              </div>
+          </div>
+        <% end  %>
+      </div>
+  <%= render "animation"%>
+  <% end %>
 
-<div class="d-flex text-align-center" style="justify-content: start; margin-left: 20px;">
-  <%= link_to "back to events", participants_path, class: "btn btn-outline-light objectborder" %>
+  <div class="d-flex text-align-center" style="justify-content: start; margin-left: 20px;">
+    <%= link_to "back to events", participants_path, class: "btn btn-outline-light objectborder" %>
+  </div>
 </div>
