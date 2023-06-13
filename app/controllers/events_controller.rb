@@ -8,10 +8,11 @@ class EventsController < ApplicationController
   end
 
   def show
-    @admin = Event.find(params[:id]).user
+    @admin = @event.user
     @propositions = Proposition.all
     @proposition = Proposition.new
     @vote = Vote.new
+    @current_user_vote = @event.votes.find_by(user: current_user)
   end
 
   def new
