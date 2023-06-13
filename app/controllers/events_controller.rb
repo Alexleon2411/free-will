@@ -4,14 +4,15 @@ class EventsController < ApplicationController
   def index
     @events = Event.all.order(created_at: :desc)
     @current_user_events = current_user.events.order(created_at: :desc)
-    
+
   end
 
   def show
-    @admin = Event.find(params[:id]).user
+    @admin = @event.user
     @propositions = Proposition.all
     @proposition = Proposition.new
     @vote = Vote.new
+    @current_user_vote = @event.votes.find_by(user: current_user)
   end
 
   def new
