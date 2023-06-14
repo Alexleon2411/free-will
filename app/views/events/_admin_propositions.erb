@@ -1,3 +1,4 @@
+
 <div style="min-height: 100vh;">
   <% if @event.status %>
     <div class="container d-flex justify-content-center p-1" style="overflow: hidden; min-heigh: 70px">
@@ -62,6 +63,7 @@
     </div>
   <% else %> <%#this else is for the statement of event.status %>
 
+
   <%# this is the animation for the celebration %>
     <%= render "animation"%>
   <%# the end of the animations  %>
@@ -87,4 +89,5 @@
   <div class="container">
     <%= link_to "back to events", events_path, class: "btn btn-outline-light objectborder m-2" %>
   </div>
+
 </div>

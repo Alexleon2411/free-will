@@ -13,6 +13,7 @@ class EventsController < ApplicationController
     @proposition = Proposition.new
     @vote = Vote.new
     @current_user_vote = @event.votes.find_by(user: current_user)
+    @sorted_events = @event.propositions.order(created_at: :desc)
     # results = @event.propositions.sort_by { |proposition| -proposition.votes.count }
     # ordered_list = results.group_by { |prop| prop.votes.count }.first.last
     # if ordered_list.count > 1
@@ -68,6 +69,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :status)
+    params.require(:event).permit(:name, :status, :photo)
   end
 end
