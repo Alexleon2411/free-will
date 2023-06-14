@@ -2,7 +2,6 @@
   <div class="container d-flex flex-column align-items-center p-1" style="overflow: hidden;">
     <h2 class="cinzel text-white" style="margin-bottom: -10px; font-size: 50px;">"<%= @event.name %>"</h2>
     <small class="plex text-white fs-9" style="margin-bottom: 20px;">Create by: <%= @event.user.nickname.capitalize %></small>
-    <h3 class="plex text-white fs-5">Select one of the following options</h3>
   </div>
   <div class="container d-flex  flex-column align-items-center p-1"  style="background-color: transparent; max-width: 450px;">
     <% @sorted_events.each do |proposition| %>
@@ -20,11 +19,11 @@
                     </div>
                   </li>
                   <% if @event.votes.where(user: current_user)[0].proposition == proposition %>
-                        <% if current_user.photo.attached? %>
-                          <%= cl_image_tag current_user.photo.key, class: "avatar fa-beat-fade", alt: "dropdown menu", style: "width: 30px; height: 30px; object-fit: cover; margin-top: 13px;"  %>
-                        <% else %>
-                          <%= image_tag "https://cdn4.iconfinder.com/data/icons/political-elections/50/48-512.png", class: "avatar", alt: "dropdown menu", style: "width: 30px; height: 30px; object-fit: cover;  margin-top: 20px;" %>
-                        <% end %>
+                    <% if current_user.photo.attached? %>
+                      <%= cl_image_tag current_user.photo.key, class: "avatar fa-beat-fade", alt: "dropdown menu", style: "width: 30px; height: 30px; object-fit: cover; margin-top: 13px;"  %>
+                    <% else %>
+                      <%= image_tag "https://cdn4.iconfinder.com/data/icons/political-elections/50/48-512.png", class: "avatar", alt: "dropdown menu", style: "width: 30px; height: 30px; object-fit: cover;  margin-top: 20px;" %>
+                    <% end %>
                   <% end %>
                 </div>
               <% else %>
