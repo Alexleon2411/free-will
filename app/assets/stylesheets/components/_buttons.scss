@@ -1,0 +1,13 @@
+.footer-btns {
+  position: fixed;
+  bottom: 0;
+  background: #d2992b;
+  padding: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
