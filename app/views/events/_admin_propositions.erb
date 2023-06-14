@@ -4,34 +4,19 @@
       <h2 class="cinzel text-white" style="min-height: 70px;"><%= @event.name %></h2>
     </div>
 
-  <div class="container d-flex  flex-column align-items-center p-1"  style="background-color: transparent; max-width: 450px;">
-    <% @event.propositions.each do |proposition| %>
-      <div class=" d-flex flex-column align-items-center p-2" >
-        <ul class="list-group">
-          <div  style="width: 400px;">
-            <% if @event.propositions.select { |proposition| proposition.votes.where(user: current_user).count > 0 }.any?  %>
-              <div class="d-flex" style="width: 100%;">
-                <li class="list-group-item  text-white d-flex justify-content-between" style="width: 90%; border-radius: 100px 10px / 120px; background: rgba(0, 0, 0, 0.3); heigh: 50px;">
-                  <div class="" style="">
-                    <%= proposition.content %>
-                  </div>
-                  <div >
-                    <p class="mb-0" style=" font-size: 15px;">Votes: <%= proposition.votes.size%></p>
-                  </div>
-                </li>
-                <% if @event.votes.where(user: current_user)[0].proposition == proposition %>
-                  <i class="fa-regular fa-square-check fa-beat-fade ms-2" style="margin-top: 10px; color: #ffffff;"></i>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="d-flex align-items-center ">
-                <%= link_to event_proposition_votes_path(@event, proposition), data: {turbo_method: :post}, class: "text-decoration-none", style: "heigh: 50px ; width: 400px;" do  %>
-                  <li class="list-group-item  text-white d-flex justify-content-between" style="border-radius: 100px 10px / 120px; background: rgba(0, 0, 0, 0.3); heigh: 50px; width: 350px;">
-                    <div class=" me-2 " style="overflow: hidden;">
-                      <p style="overflow: hidden;"><%= proposition.content %></p>
+    <div class="container d-flex  flex-column align-items-center p-1"  style="background-color: transparent; max-width: 450px;">
+      <% @event.propositions.each do |proposition| %>
+        <div class=" d-flex flex-column align-items-center p-2" >
+          <ul class="list-group">
+            <div  style="width: 400px;">
+              <% if @event.propositions.select { |proposition| proposition.votes.where(user: current_user).count > 0 }.any?  %>
+                <div class="d-flex" style="width: 100%;">
+                  <li class="list-group-item m-1  text-white d-flex justify-content-between" style="width: 90%; border-radius: 100px 10px / 120px; background: rgba(0, 0, 0, 0.3); heigh: 50px;">
+                    <div class="" style="">
+                      <%= proposition.content %>
                     </div>
-                    <div>
-                      <p class="mb-0">Votes: <%= proposition.votes.size%></p>
+                    <div class="border" style="border-radius: 40px;">
+                      <p class="mb-0 p-2" style="content-box: break-word; font-size: 15px;">Votes: <%= proposition.votes.size%></p>
                     </div>
                   </li>
                   <% if @event.votes.where(user: current_user)[0].proposition == proposition %>
