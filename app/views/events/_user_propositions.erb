@@ -4,7 +4,7 @@
     <h3 class="plex text-white fs-6">Select one of the following options</h3>
   </div>
   <div class="container d-flex  flex-column align-items-center p-1"  style="background-color: transparent; max-width: 450px;">
-    <% @event.propositions.each do |proposition| %>
+    <% @sorted_events.each do |proposition| %>
         <div class=" d-flex flex-column align-items-center " >
           <ul class="list-group">
             <div  style="width: 400px;">
@@ -38,7 +38,9 @@
           </ul>
         </div>
     <% end %>
-    <%# <%= link_to "Change your Mind?", event_proposition_vote_path(@event, @user_proposition), data: {turbo_method: :delete}, class: "btn btn-outline-light objectborder" %>
+      <% if @current_user_vote.nil? == false %>
+        <%= link_to "Change your Mind?", vote_path( id: @current_user_vote.id), data: {turbo_method: :delete}, class: "btn btn-outline-light objectborder"%>
+      <% end %>
   </div>
 <% else %>
   <%# result of the event%>
