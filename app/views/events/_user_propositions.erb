@@ -5,7 +5,7 @@
     <h3 class="plex text-white fs-5">Select one of the following options</h3>
   </div>
   <div class="container d-flex  flex-column align-items-center p-1"  style="background-color: transparent; max-width: 450px;">
-    <% @event.propositions.each do |proposition| %>
+    <% @sorted_events.each do |proposition| %>
         <div class=" d-flex flex-column align-items-center " >
           <ul class="list-group">
             <div  style="width: 400px;">
