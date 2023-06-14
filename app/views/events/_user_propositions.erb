@@ -1,7 +1,8 @@
 <% if @event.status %>
   <div class="container d-flex flex-column align-items-center p-1" style="overflow: hidden;">
-    <h2 class="cinzel text-white fs-1">"<%= @event.name %>"</h2>
-    <h3 class="plex text-white fs-6">Select one of the following options</h3>
+    <h2 class="cinzel text-white" style="margin-bottom: -10px; font-size: 50px;">"<%= @event.name %>"</h2>
+    <small class="plex text-white fs-9" style="margin-bottom: 20px;">Create by: <%= @event.user.nickname.capitalize %></small>
+    <h3 class="plex text-white fs-5">Select one of the following options</h3>
   </div>
   <div class="container d-flex  flex-column align-items-center p-1"  style="background-color: transparent; max-width: 450px;">
     <% @event.propositions.each do |proposition| %>
@@ -19,7 +20,11 @@
                     </div>
                   </li>
                   <% if @event.votes.where(user: current_user)[0].proposition == proposition %>
-                        <i class="fa-regular fa-square-check fa-beat-fade mt-4 ms-2" style="color: #ffffff;"></i>
+                        <% if current_user.photo.attached? %>
+                          <%= cl_image_tag current_user.photo.key, class: "avatar fa-beat-fade", alt: "dropdown menu", style: "width: 30px; height: 30px; object-fit: cover; margin-top: 13px;"  %>
+                        <% else %>
+                          <%= image_tag "https://cdn4.iconfinder.com/data/icons/political-elections/50/48-512.png", class: "avatar", alt: "dropdown menu", style: "width: 30px; height: 30px; object-fit: cover;  margin-top: 15px;" %>
+                        <% end %>
                   <% end %>
                 </div>
               <% else %>
@@ -45,19 +50,21 @@
 <% else %>
   <%# result of the event%>
     <div class="container " style="text-align: center;">
-      <h1 class="cinzel text-white">The winner is</h1>
-      <% @event.propositions.sort_by { |proposition| -proposition.votes.count }.each_with_index do |proposition, index| %>
-        <div class="p-2 m-1 text-white d-flex flex-column justify-content-between" style="border-radius: 100px 10px / 120px; background: rgba(0, 0, 0, 0.3); color: white;">
-            <div class=" me-2" style="overflow: hidden;">
-              <p style="overflow: hidden;"><%= proposition.content %></p>
-            </div>
-            <div class="d-flex">
-              <p><%= index + 1 %>° Place</p>
-              <p class="mb-0">Total: <%= proposition.votes.count%></p>
-            </div>
-        </div>
-      <% end  %>
-    </div>
+    <h1 class="cinzel text-white" style="font-size: 40px;">The winner is:</h1>
+    <% @event.propositions.sort_by { |proposition| -proposition.votes.count }.each_with_index do |proposition, index| %>
+      <div class=" m-1 text-white d-flex flex-column justify-content-between proposition <%= index == 0 ? "winner" : "" %>" style="border-radius: 100px 10px / 120px; color: white;">
+          <div class=" me-2" style="overflow: hidden;">
+            <p style="font-size: 20px; overflow: hidden;"><%= proposition.content %></p>
+          </div>
+          <%# <%= proposition.content %>
+          <div class="d-flex justify-content-evenly ">
+            <p><%= index + 1 %>° Place</p>
+            <p class="mb-0">Total: <%= proposition.votes.count%></p>
+          </div>
+          <%# <%= proposition.votes.count %>
+      </div>
+    <% end %>
+  </div>
 <%= render "animation"%>
 <% end %>
 
