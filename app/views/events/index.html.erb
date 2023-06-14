@@ -1,4 +1,4 @@
-<div class="mt-4" style="padding-top: 4rem;">
+<div class="mt-4" style="padding-top: 5rem;">
 <div class="container d-flex justify-content-center ">
   <h1 class="cinzel text-white">My Events </h1>
 </div>
@@ -6,7 +6,7 @@
       <div class="container d-flex   align-text-center plex p-1" style="">
         <div style="overflow: hidden; width: 80%;">
           <%= link_to event_path(event), class: "text-decoration-none btn btn-outline-light", style: "overflow: hidden; max-height: auto; width: 100%; border-radius: 10px 100px / 120px; background: rgba(0, 0, 0, 0.3);" do %>
-            <%= event.name %>
+            <%= event.name.upcase %>
           <% end %>
         </div>
         <div class="d-flex align-items-center">

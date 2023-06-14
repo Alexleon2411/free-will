@@ -3,8 +3,8 @@
   <div style="max-width: 400px; height: auto;">
     <%= simple_form_for @event do |f| %>
       <%= f.input :name, label: 'Name of the event', error: 'Name is mandatory, please specify one', style: 'color: white;' %>
-      <%= f.button :submit, class: "btn btn-outline-light objectborder text-white" %>
-       <%= link_to "cancel", events_path, class: "text-decoration-none btn btn-outline-light objectborder" %>
+      <%= f.submit "Create event", class: "btn btn-outline-light objectborder text-white" %>
+       <%= link_to "Cancel", events_path, class: "text-decoration-none btn btn-outline-light objectborder" %>
     <% end %>
   </div>
 </div>
