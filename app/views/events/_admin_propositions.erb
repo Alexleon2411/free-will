@@ -2,7 +2,7 @@
    <div class="container d-flex justify-content-center p-1" style="overflow: hidden; min-heigh: 70px">
     <h2 class="cinzel text-white" style="min-height: 70px;"><%= @event.name %></h2>
    </div>
-
+      <%= render "propositions/form", event: @event, proposition:  @proposition %>
     <div class="container d-flex  flex-column align-items-center p-1"  style="background-color: transparent; max-width: 450px;">
       <% @event.propositions.each do |proposition| %>
         <div class=" d-flex flex-column align-items-center p-2" >
@@ -42,14 +42,11 @@
           </ul>
         </div>
       <% end %> <%#this is the end of the proposition iterations %>
-      <%= render "propositions/form", event: @event, proposition:  @proposition %>
       <% if @current_user_vote.nil? == false %>
        <%= link_to "Change your Mind?", vote_path( id: @current_user_vote.id), data: {turbo_method: :delete}, class: "btn btn-outline-light objectborder"%>
       <% end %>
     </div>
-    <div class="container">
       <%= link_to "End the event", status_event_path(@event), data: {turbo_method: :patch}, class: "btn btn-outline-light objectborder m-2" %>
-    </div>
 <% else %> <%#this else is for the statement of event.status %>
 
 
@@ -57,24 +54,26 @@
   <%= render "animation"%>
 <%# the end of the animations  %>
 
-<%# this is the result part %>
-  <div class="container " style="text-align: center;">
-    <h1 class="cinzel text-white">The winner is</h1>
-    <% @event.propositions.sort_by { |proposition| -proposition.votes.count }.each_with_index do |proposition, index| %>
-      <div class=" m-1 text-white d-flex flex-column justify-content-between" style="border-radius: 100px 10px / 120px; background: rgba(0, 0, 0, 0.3); color: white;">
-          <div class=" me-2" style="overflow: hidden;">
-            <p style="overflow: hidden;"><%= proposition.content %></p>
-          </div>
-          <%# <%= proposition.content %>
-          <div class="d-flex justify-content-evenly">
-            <p><%= index + 1 %>° Place</p>
-            <p class="mb-0">Total: <%= proposition.votes.count%></p>
-          </div>
-          <%# <%= proposition.votes.count %>
-      </div>
-    <% end %>
-  </div>
+  <%# result of the event%>
+    <div class="container " style="text-align: center;">
+      <h1 class="cinzel text-white">The winner is</h1>
+      <% @event.propositions.sort_by { |proposition| -proposition.votes.count }.each_with_index do |proposition, index| %>
+        <div class="p-2 m-1 text-white d-flex flex-column justify-content-between" style="border-radius: 100px 10px / 120px; background: rgba(0, 0, 0, 0.3); color: white;">
+            <div class=" me-2" style="overflow: hidden;">
+              <p style="overflow: hidden;"><%= proposition.content %></p>
+            </div>
+            <%# <%= proposition.content %>
+            <div class="d-flex">
+              <p><%= index + 1 %>° Place</p>
+              <p class="mb-0">Total: <%= proposition.votes.count%></p>
+            </div>
+            <%# <%= proposition.votes.count %>
+        </div>
+      <% end  %>
+    </div>
+<%= render "animation"%>
 <% end %>
-<div class="container">
-  <%= link_to "back to events", events_path, class: "btn btn-outline-light objectborder m-2" %>
+
+<div class="d-flex text-align-center" style="justify-content: start; margin-left: 20px;">
+  <%= link_to "back to events", participants_path, class: "btn btn-outline-light objectborder" %>
 </div>
