@@ -1,11 +1,24 @@
 <div class="container text-white" style="padding-top: 4rem;">
   <h1 class="cinzel">All Events</h1>
 </div>
-<div class="container d-flex flex-column mb-2 align-text-center objectborder" style="max-width: 600px;">
+<div class="container d-flex flex-column mb-2 text-align-center objectborder" style="max-width: 600px;">
+<h4 class="cinzel text-white text-align-center" >Open Events</h4>
   <% @participants.each do |participant| %>
     <% participant.events.each do |event| %>
+    <% if event.status == true %>
         <%= link_to event_path(event), class: "text-decoration-none btn btn-outline-light ", style: "max-width: 600px; border-radius: 100px 10px / 120px; background: rgba(0, 0, 0, 0.3); margin-bottom:10px;" do %>
-        <%= event.name %>
+            <%= event.name %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+  <h4 class="cinzel text-white">Closed Events</h4>
+  <% @participants.each do |participant| %>
+    <% participant.events.each do |event| %>
+    <% if event.status == false %>
+        <%= link_to event_path(event), class: "text-decoration-none btn btn-outline-light ", style: "max-width: 600px; border-radius: 100px 10px / 120px; background: rgba(0, 0, 0, 0.3); margin-bottom:10px;" do %>
+          <%= event.name %>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
