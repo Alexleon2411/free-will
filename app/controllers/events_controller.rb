@@ -38,7 +38,9 @@ class EventsController < ApplicationController
   end
 
   def edit
+  end
 
+  def pick_winner
   end
 
   def status
