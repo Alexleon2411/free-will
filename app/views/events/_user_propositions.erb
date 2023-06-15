@@ -21,7 +21,6 @@
                     <div class="" style="word-wrap: break-word;" >
                       <%= proposition.content %>
                     </div>
-                   
                   </li>
                   <% if @event.votes.where(user: current_user)[0].proposition == proposition %>
                     <% if current_user.photo.attached? %>
@@ -36,9 +35,6 @@
                   <li class="list-group-item m-1 p-3 text-white d-flex justify-content-between" style="border-radius: 100px 10px / 120px; background: rgba(0, 0, 0, 0.3); heigh: 50px;">
                     <div class="objectborder " style="word-wrap: break-word;">
                       <%= proposition.content %>
-                    </div>
-                    <div>
-                      <p class="mb-0">Votes: <%= proposition.votes.size%></p>
                     </div>
                   </li>
                 <% end %>
