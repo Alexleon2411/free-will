@@ -31,6 +31,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @user = current_user
     @event.user = @user
+    @event.propositions = Proposition.all
     if @event.save
       redirect_to events_path
     else

@@ -1,4 +1,7 @@
-<div style="padding: 5rem 0rem;">
+<div style="padding: 5rem 0rem;"
+    data-controller="event-subscription"
+    data-event-subscription-event-id-value="<%= @event.id %>"
+>
   <% if current_user == @admin %>
    <%#this is the admin part %>
     <%= render "admin_propositions" %>

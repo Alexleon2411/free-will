@@ -18,12 +18,10 @@
               <% if @event.propositions.select { |proposition| proposition.votes.where(user: current_user).count > 0 }.any?  %>
                 <div class="d-flex" style="width: 100%;">
                   <li class="list-group-item m-1 p-3 text-white d-flex justify-content-between" style="width: 90%;border-radius: 100px 10px / 120px; background: rgba(0, 0, 0, 0.3); heigh: 50px;">
-                    <div class="" style="word-wrap: break-word;">
+                    <div class="" style="word-wrap: break-word;" >
                       <%= proposition.content %>
                     </div>
-                    <div style="overflow: hidden;">
-                      <p class="mb-0">Votes: <%= proposition.votes.size%></p>
-                    </div>
+                   
                   </li>
                   <% if @event.votes.where(user: current_user)[0].proposition == proposition %>
                     <% if current_user.photo.attached? %>
@@ -58,11 +56,11 @@
         <h1 class="cinzel text-white mb-4">The winner is <%= proposition.content %></h1>
       <% end %>
       <div class=" m-1 text-white d-flex flex-column justify-content-between proposition <%= index == 0 ? "winner" : "" %>" style="border-radius: 100px 10px / 120px; color: white;">
-          <div class=" me-2" style="overflow: hidden;">
+          <div class=" me-2" style="overflow: hidden;" >
             <p style="font-size: 20px; overflow: hidden;"><%= proposition.content.upcase %></p>
           </div>
           <%# <%= proposition.content %>
-          <div class="d-flex justify-content-evenly ">
+          <div class="d-flex justify-content-evenly " data-event-subscription-target="votes">
           <%# if propoxi is in the index 0 we sum 1 %>
             <% if index == 0 %>
               <p><%= index + 1 %>° Place</p>

@@ -1,5 +1,5 @@
 
-<div style="">
+<div style="" >
   <% if @event.status %>
     <div class="container d-flex flex-column align-items-center p-1" style="overflow: hidden;">
       <h2 class="cinzel text-white" style="margin-bottom: -10px; font-size: 50px;"><%= @event.name %></h2>
@@ -13,18 +13,18 @@
       <%= link_to "Change your mind?", vote_path( id: @current_user_vote.id), data: {turbo_method: :delete}, class: "btn btn-outline-light objectborder"%>
     </div>
     <% end %>
-    <div class="container d-flex  flex-column align-items-center p-1"  style="background-color: transparent; max-width: 450px;">
+    <div class="container d-flex  flex-column align-items-center p-1"  style="background-color: transparent; max-width: 450px;" >
       <% @sorted_events.each do |proposition| %>
         <div class=" d-flex flex-column align-items-center p-2" >
           <ul class="list-group">
-            <div  style="width: 400px;">
+            <div  style="width: 400px;" >
               <% if @event.propositions.select { |proposition| proposition.votes.where(user: current_user).count > 0 }.any?  %>
                 <div class="d-flex" style="width: 100%;">
                   <li class="list-group-item m-1  text-white d-flex justify-content-between" style="width: 90%; border-radius: 100px 10px / 120px; background: rgba(0, 0, 0, 0.3); heigh: 50px;">
                     <div class="" style="">
                       <%= proposition.content %>
                     </div>
-                    <div class="border" style="border-radius: 40px;">
+                    <div class="border" style="border-radius: 40px;" data-event-subscription-target="votes">
                       <p class="mb-0 p-2" style="content-box: break-word; font-size: 15px;">Votes: <%= proposition.votes.size%></p>
                     </div>
                   </li>
@@ -43,7 +43,7 @@
                       <div class=" me-2 mb-0" style="overflow: hidden;">
                         <p style="overflow: hidden;"><%= proposition.content %></p>
                       </div>
-                      <div class="border p-2" style="border-radius: 40px;">
+                      <div class="border p-2" style="border-radius: 40px;" data-event-subscription-target="votes">
                         <p class="mb-0">Votes: <%= proposition.votes.size%></p>
                       </div>
                     </li>
@@ -75,17 +75,17 @@
   <%# the end of the animations  %>
 
   <%# this is the result part %>
-    <div class="container " style="text-align: center;">
+    <div class="container " style="text-align: center;" >
       <% @event.propositions.sort_by { |proposition| -proposition.votes.count }.each_with_index do |proposition, index| %>
         <% if index == 0 %>
           <h1 class="cinzel text-white mb-4">The winner is <%= proposition.content %></h1>
         <% end %>
         <div class=" m-1 text-white d-flex flex-column justify-content-between proposition <%= index == 0 ? "winner" : "" %>" style="border-radius: 100px 10px / 120px; color: white;">
-            <div class=" me-2" style="overflow: hidden;">
+            <div class=" me-2" style="overflow: hidden;" >
               <p style="font-size: 20px; overflow: hidden;"><%= proposition.content.upcase %></p>
             </div>
             <%# <%= proposition.content %>
-            <div class="d-flex justify-content-evenly ">
+            <div class="d-flex justify-content-evenly" data-event-subscription-target="votes">
                 <% if index == 0 %>
                 <p><%= index + 1 %>° Place</p>
                 <p class="mb-0">Total: <%= proposition.votes.count.to_i + 1%></p>
