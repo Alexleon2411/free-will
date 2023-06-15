@@ -1,12 +1,18 @@
 
-<div style="min-height: 100vh;">
+<div style="">
   <% if @event.status %>
     <div class="container d-flex flex-column align-items-center p-1" style="overflow: hidden;">
-      <h2 class="cinzel text-white" style="margin-bottom: -10px; font-size: 50px;">"<%= @event.name %>"</h2>
-      <small class="plex text-white fs-9" style="margin-bottom: 20px;">Create by: <%= @event.user.nickname.capitalize %></small>
+      <h2 class="cinzel text-white" style="margin-bottom: -10px; font-size: 50px;"><%= @event.name %></h2>
+      <small class="plex text-white fs-9" style="margin-bottom: 20px;">Created by: <%= @event.user.nickname.capitalize %></small>
     </div>
-      <%= render "propositions/form", event: @event, proposition:  @proposition %>
-      
+
+    <%= render "propositions/form", event: @event, proposition:  @proposition %>
+
+    <% if @current_user_vote.nil? == false %>
+    <div class="d-flex justify-content-center mt-3">
+      <%= link_to "Change your mind?", vote_path( id: @current_user_vote.id), data: {turbo_method: :delete}, class: "btn btn-outline-light objectborder"%>
+    </div>
+    <% end %>
     <div class="container d-flex  flex-column align-items-center p-1"  style="background-color: transparent; max-width: 450px;">
       <% @sorted_events.each do |proposition| %>
         <div class=" d-flex flex-column align-items-center p-2" >
@@ -55,12 +61,10 @@
           </ul>
         </div>
       <% end %> <%#this is the end of the proposition iterations %>
-      <% if @current_user_vote.nil? == false %>
-        <%= link_to "Change your Mind?", vote_path( id: @current_user_vote.id), data: {turbo_method: :delete}, class: "btn btn-outline-light objectborder"%>
-      <% end %>
+
     </div>
-    <div class="container d-flex justify-content-between" style="margin-top: 500px;">
-      <%= link_to "back to events", events_path, class: "btn btn-outline-light objectborder m-2" %>
+    <div class="container d-flex justify-content-between footer-btns" style="margin-top: 150px;">
+      <%= link_to "Back to events", events_path, class: "btn btn-outline-light objectborder m-2" %>
       <%= link_to "End the event", status_event_path(@event), data: {turbo_method: :patch}, class: "btn btn-outline-light objectborder m-2" %>
     </div>
   <% else %> <%#this else is for the statement of event.status %>
@@ -72,11 +76,13 @@
 
   <%# this is the result part %>
     <div class="container " style="text-align: center;">
-      <h1 class="cinzel text-white">The winner is</h1>
       <% @event.propositions.sort_by { |proposition| -proposition.votes.count }.each_with_index do |proposition, index| %>
+        <% if index == 0 %>
+          <h1 class="cinzel text-white mb-4">The winner is <%= proposition.content %></h1>
+        <% end %>
         <div class=" m-1 text-white d-flex flex-column justify-content-between proposition <%= index == 0 ? "winner" : "" %>" style="border-radius: 100px 10px / 120px; color: white;">
             <div class=" me-2" style="overflow: hidden;">
-              <p style="font-size: 20px; overflow: hidden;"><%= proposition.content %></p>
+              <p style="font-size: 20px; overflow: hidden;"><%= proposition.content.upcase %></p>
             </div>
             <%# <%= proposition.content %>
             <div class="d-flex justify-content-evenly ">
@@ -92,8 +98,8 @@
         </div>
       <% end %>
     </div>
-    <div class="container" style="justify-content: start; margin-left: 20px; margin-top: 350px;">
-      <%= link_to "back to events", events_path, class: "btn btn-outline-light objectborder m-2" %>
+    <div class="footer-btns">
+      <%= link_to "Back to events", events_path, class: "btn btn-outline-light objectborder m-2" %>
     </div>
   <% end %>
 </div>
