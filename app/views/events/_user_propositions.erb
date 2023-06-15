@@ -22,7 +22,7 @@
                       <%= proposition.content %>
                     </div>
                     <div style="overflow: hidden;">
-                      <p class="mb-0">Votes: <%= proposition.votes.size%></p>
+                      <p class="mb-0"><% proposition.votes.size%></p>
                     </div>
                   </li>
                   <% if @event.votes.where(user: current_user)[0].proposition == proposition %>
@@ -40,7 +40,7 @@
                       <%= proposition.content %>
                     </div>
                     <div>
-                      <p class="mb-0">Votes: <%= proposition.votes.size%></p>
+                      <p class="mb-0"><% proposition.votes.size%></p>
                     </div>
                   </li>
                 <% end %>
